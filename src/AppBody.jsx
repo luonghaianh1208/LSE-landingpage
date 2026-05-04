@@ -94,8 +94,12 @@ export default function AppBody() {
 {/*  ─── NAVBAR ───  */}
 <nav id="navbar">
   <div className="nav-inner">
-    <a href="#hero" className="nav-logo">
-      <img src="assets/logo.png" alt="Lam Sơn Edutech Logo" style={{"height":"48px"}} />
+    <a href="#hero" className="nav-logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+      {content.global?.logo_url ? (
+        <img src={content.global.logo_url} alt="Lam Sơn Edutech Logo" style={{ height: '48px' }} />
+      ) : (
+        <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#1B2F5E', letterSpacing: '-0.5px' }}>Lam Sơn <span style={{ color: '#da251d' }}>Edutech</span></span>
+      )}
     </a>
     <ul className="nav-links" id="nav-links">
       <li><a href="#about">Về chúng tôi</a></li>
@@ -269,7 +273,11 @@ export default function AppBody() {
         </div>
       </div>
       <div className="about-visual reveal">
-        <img src="assets/logo.png" alt="Lam Sơn Edutech" style={{"height":"72px","marginBottom":"20px","background":"#fff","borderRadius":"12px","padding":"10px 16px"}} />
+        {content.global?.logo_url ? (
+          <img src={content.global.logo_url} alt="Lam Sơn Edutech" style={{"height":"72px","marginBottom":"20px","background":"#fff","borderRadius":"12px","padding":"10px 16px"}} />
+        ) : (
+          <div style={{fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '20px'}}>Lam Sơn <span style={{color: '#ff0'}}>Edutech</span></div>
+        )}
         <div className="about-mission-quote">
           "Số hóa giáo dục, đồng hành cùng giáo viên & trung tâm phát triển bền vững"
         </div>
@@ -284,8 +292,8 @@ export default function AppBody() {
           <span className="about-tag">B2B2C</span>
         </div>
         <div className="about-locations">
-          <div className="loc-item"><div className="loc-dot"></div><span><strong style={{"color":"#fff"}}>CS1:</strong> 870–872 Lê Thanh Nghị, Tân Hưng, TP Hải Phòng</span></div>
-          <div className="loc-item"><div className="loc-dot"></div><span><strong style={{"color":"#fff"}}>CS2:</strong> Ô 15–Đ13, KĐT Geleximco, Lê Trọng Tấn, Hoài Đức, Hà Nội</span></div>
+          <div className="loc-item"><div className="loc-dot"></div><span><strong style={{"color":"#fff"}}>CS1:</strong> {content.global?.address_hp || '870–872 Lê Thanh Nghị, Tân Hưng, TP Hải Phòng'}</span></div>
+          <div className="loc-item"><div className="loc-dot"></div><span><strong style={{"color":"#fff"}}>CS2:</strong> {content.global?.address_hn || 'Ô 15–Đ13, KĐT Geleximco, Lê Trọng Tấn, Hoài Đức, Hà Nội'}</span></div>
         </div>
       </div>
     </div>
@@ -567,8 +575,8 @@ export default function AppBody() {
           <li><div className="benefit-dot">🆓</div> Hoàn toàn miễn phí, không ràng buộc</li>
         </ul>
         <div className="consult-contact">
-          <div className="contact-row">📞 <strong>Hotline:</strong> &nbsp;<a href="tel:0936171111" style={{"color":"var(--gold)","fontWeight":"700"}}>0936.171.111</a></div>
-          <div className="contact-row">✉️ <strong>Email:</strong> &nbsp;<a href="mailto:edutech.lamson@gmail.com" style={{"color":"var(--gold)","fontWeight":"700"}}>edutech.lamson@gmail.com</a></div>
+          <div className="contact-row">📞 <strong>Hotline:</strong> &nbsp;<a href={`tel:${content.global?.hotline || '0936171111'}`} style={{"color":"var(--gold)","fontWeight":"700"}}>{content.global?.hotline || '0936.171.111'}</a></div>
+          <div className="contact-row">✉️ <strong>Email:</strong> &nbsp;<a href={`mailto:${content.global?.email || 'edutech.lamson@gmail.com'}`} style={{"color":"var(--gold)","fontWeight":"700"}}>{content.global?.email || 'edutech.lamson@gmail.com'}</a></div>
           <div className="contact-row">🌐 <strong>Website:</strong> &nbsp;<a href="https://lamsonedutech.vn" target="_blank" style={{"color":"var(--gold)","fontWeight":"700"}}>lamsonedutech.vn</a></div>
         </div>
       </div>
@@ -647,8 +655,8 @@ export default function AppBody() {
               Cảm ơn bạn đã quan tâm đến <strong>Lam Sơn Edutech</strong>.<br />
               Chuyên gia tư vấn sẽ liên hệ với bạn trong vòng <strong>24 giờ</strong>.<br /><br />
               Trong thời gian chờ, bạn có thể liên hệ trực tiếp qua:<br />
-              📞 <a href="tel:0936171111" style={{"color":"var(--gold)","fontWeight":"700"}}>0936.171.111</a> &nbsp;|&nbsp;
-              ✉️ <a href="mailto:edutech.lamson@gmail.com" style={{"color":"var(--gold)","fontWeight":"700"}}>edutech.lamson@gmail.com</a>
+              📞 <a href={`tel:${content.global?.hotline || '0936171111'}`} style={{"color":"var(--gold)","fontWeight":"700"}}>{content.global?.hotline || '0936.171.111'}</a> &nbsp;|&nbsp;
+              ✉️ <a href={`mailto:${content.global?.email || 'edutech.lamson@gmail.com'}`} style={{"color":"var(--gold)","fontWeight":"700"}}>{content.global?.email || 'edutech.lamson@gmail.com'}</a>
             </div>
           </div>
         </div>
@@ -662,7 +670,11 @@ export default function AppBody() {
   <div className="container">
     <div className="footer-grid">
       <div>
-        <img src="assets/logo.png" alt="Lam Sơn Edutech" style={{"height":"44px","background":"#fff","borderRadius":"8px","padding":"6px 12px","marginBottom":"8px"}} />
+        {content.global?.logo_url ? (
+          <img src={content.global.logo_url} alt="Lam Sơn Edutech" style={{"height":"44px","background":"#fff","borderRadius":"8px","padding":"6px 12px","marginBottom":"8px"}} />
+        ) : (
+          <div style={{fontSize: '24px', fontWeight: 'bold', color: '#fff', marginBottom: '8px'}}>Lam Sơn <span style={{color: '#da251d'}}>Edutech</span></div>
+        )}
         <div className="footer-slogan">Số hóa giáo dục, đồng hành cùng giáo viên & trung tâm phát triển bền vững.<br />Thuộc Tập đoàn Lam Sơn.</div>
         <div className="footer-socials">
           <a href="https://facebook.com" target="_blank" className="social-btn" title="Facebook">📘</a>
@@ -703,11 +715,11 @@ export default function AppBody() {
       <div>
         <div className="footer-heading">Liên hệ</div>
         <ul className="footer-contact footer-links">
-          <li>📞 <a href="tel:0936171111">0936.171.111</a></li>
-          <li>✉️ <a href="mailto:edutech.lamson@gmail.com">edutech.lamson@gmail.com</a></li>
+          <li>📞 <a href={`tel:${content.global?.hotline || '0936171111'}`}>{content.global?.hotline || '0936.171.111'}</a></li>
+          <li>✉️ <a href={`mailto:${content.global?.email || 'edutech.lamson@gmail.com'}`}>{content.global?.email || 'edutech.lamson@gmail.com'}</a></li>
           <li>🌐 <a href="https://lamsonedutech.vn" target="_blank">lamsonedutech.vn</a></li>
-          <li>📍 870–872 Lê Thanh Nghị, Tân Hưng, TP Hải Phòng</li>
-          <li>📍 Ô 15–Đ13, KĐT Geleximco, Hoài Đức, Hà Nội</li>
+          <li>📍 {content.global?.address_hp || '870–872 Lê Thanh Nghị, Tân Hưng, TP Hải Phòng'}</li>
+          <li>📍 {content.global?.address_hn || 'Ô 15–Đ13, KĐT Geleximco, Hoài Đức, Hà Nội'}</li>
         </ul>
       </div>
     </div>
