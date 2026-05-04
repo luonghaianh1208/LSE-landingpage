@@ -28,11 +28,42 @@ export default function AdminLeads() {
     await supabase.from('leads').update({ care_notes: note }).eq('id', id);
   };
 
+  // Analytics
+  const totalLeads = leads.length;
+  const newLeads = leads.filter(l => l.status === 'new' || !l.status).length;
+  const segmentStats = leads.reduce((acc, l) => {
+    const seg = l.segment || 'Khác';
+    acc[seg] = (acc[seg] || 0) + 1;
+    return acc;
+  }, {});
+
   if (loading) return <div>Đang tải dữ liệu...</div>;
 
   return (
     <div>
       <h2 style={{ fontSize: '24px', color: '#1B2F5E', marginBottom: '24px' }}>Khách hàng cần tư vấn</h2>
+      
+      {/* Analytics Dashboard */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '32px' }}>
+        <div style={{ background: '#fff', border: '1px solid #E2E6F0', borderRadius: '12px', padding: '20px', boxShadow: '0 2px 8px rgba(0,0,0,0.02)' }}>
+          <div style={{ color: '#5A6A80', fontSize: '14px', marginBottom: '8px' }}>Tổng số Lead</div>
+          <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#1B2F5E' }}>{totalLeads}</div>
+        </div>
+        <div style={{ background: '#fff', border: '1px solid #E2E6F0', borderRadius: '12px', padding: '20px', boxShadow: '0 2px 8px rgba(0,0,0,0.02)' }}>
+          <div style={{ color: '#5A6A80', fontSize: '14px', marginBottom: '8px' }}>Lead Mới (Chưa XL)</div>
+          <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#DC2626' }}>{newLeads}</div>
+        </div>
+        <div style={{ background: '#fff', border: '1px solid #E2E6F0', borderRadius: '12px', padding: '20px', boxShadow: '0 2px 8px rgba(0,0,0,0.02)', gridColumn: 'span 2' }}>
+          <div style={{ color: '#5A6A80', fontSize: '14px', marginBottom: '12px' }}>Phân bổ theo đối tượng</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+            {Object.entries(segmentStats).map(([seg, count]) => (
+              <div key={seg} style={{ background: '#F0F2F8', padding: '6px 12px', borderRadius: '50px', fontSize: '13px', color: '#1B2F5E', fontWeight: '500' }}>
+                {seg}: <span style={{ color: '#E5A211', fontWeight: 'bold' }}>{count}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       
       <div style={{ overflowX: 'auto' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '14px' }}>

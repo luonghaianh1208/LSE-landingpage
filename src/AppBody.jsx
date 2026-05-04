@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from './lib/supabase';
 
 export default function AppBody() {
-  const [content, setContent] = useState({});
   const [products, setProducts] = useState([]);
   const [activeFilter, setActiveFilter] = useState('all');
   const [formState, setFormState] = useState({ name: '', phone: '', email: '', unit: '', segment: '', product: '', note: '' });
@@ -34,7 +33,7 @@ export default function AppBody() {
 
   
   useEffect(() => {
-    fetchData();
+    fetchProducts();
   }, []);
 
 
@@ -78,16 +77,9 @@ export default function AppBody() {
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     return () => observer.disconnect();
-  }, [content, products, activeFilter]);
+  }, [products, activeFilter]);
 
-  const fetchData = async () => {
-    const { data: contentData } = await supabase.from('site_content').select('*');
-    if (contentData) {
-      const parsed = {};
-      contentData.forEach(item => { parsed[item.section_key] = item.content; });
-      setContent(parsed);
-    }
-
+  const fetchProducts = async () => {
     const { data: prodData } = await supabase.from('products').select('*').eq('status', 'live').order('order_index', { ascending: true });
     if (prodData) {
       setProducts(prodData);
@@ -105,11 +97,7 @@ export default function AppBody() {
 <nav id="navbar">
   <div className="nav-inner">
     <a href="#hero" className="nav-logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-      {content.global?.logo_url ? (
-        <img src={content.global.logo_url} alt="Lam Sơn Edutech Logo" style={{ height: '48px' }} />
-      ) : (
-        <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#1B2F5E', letterSpacing: '-0.5px' }}>Lam Sơn <span style={{ color: '#da251d' }}>Edutech</span></span>
-      )}
+      <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#1B2F5E', letterSpacing: '-0.5px' }}>Lam Sơn <span style={{ color: '#da251d' }}>Edutech</span></span>
     </a>
     <ul className="nav-links" id="nav-links">
       <li><a href="#about">Về chúng tôi</a></li>
@@ -134,9 +122,11 @@ export default function AppBody() {
         <div className="hero-eyebrow">
           <svg width="18" height="12" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" style={{"display":"inline-block","verticalAlign":"middle","marginRight":"4px","borderRadius":"2px"}}><rect width="30" height="20" fill="#da251d"/><polygon points="15,4 11.47,14.85 20.71,8.15 9.29,8.15 18.53,14.85" fill="#ff0"/></svg> Công nghệ giáo dục Việt Nam
         </div>
-        <h1 className="hero-title" style={{textWrap:"balance"}} dangerouslySetInnerHTML={{ __html: content.hero?.title || '<span>Số hóa Giáo dục</span> đồng&nbsp;hành cùng Giáo&nbsp;viên & Trung&nbsp;tâm phát&nbsp;triển bền&nbsp;vững' }}></h1>
+        <h1 className="hero-title" style={{textWrap:"balance"}}>
+          <span style={{ color: '#E5A211' }}>Số hóa Giáo dục</span> đồng hành cùng Trung tâm phát triển bền vững
+        </h1>
         <p className="hero-desc">
-          {content.hero?.description || 'Lam Sơn Edutech (LSE) cung cấp hệ sinh thái giải pháp AI và chuyển đổi số toàn diện — từ phòng học đến phòng họp, từ giáo viên đến nhà quản lý.'}
+          LSE cung cấp hệ điều hành chuyển đổi số toàn diện — từ phòng học đến phòng họp, giúp các tổ chức giáo dục tăng gấp 3 hiệu suất và giảm 70% chi phí vận hành.
         </p>
         <div className="hero-btns">
           <a href="#consult" className="btn btn-primary" style={{"fontSize":"16px","padding":"16px 32px"}}>
@@ -197,18 +187,29 @@ export default function AppBody() {
 <section className="section pain-section">
   <div className="container text-center reveal">
     <div className="badge" style={{ background: '#FEF2F2', color: '#DC2626', borderColor: '#FECACA' }}>Thực trạng vận hành</div>
-    <h2 className="section-title">{content.pain_points?.title || 'Bạn có đang gặp tình trạng:'}</h2>
+    <h2 className="section-title">Nỗi đau của Giáo dục truyền thống</h2>
     <div className="pain-grid">
-      {(content.pain_points?.items || 'Quản lý rối\nSai sót dữ liệu\nTốn người\nKhông scale được').split('\n').filter(Boolean).map((item, idx) => (
-        <div className="pain-card" key={idx}>
-          <div className="pain-icon">⚠️</div>
-          <div className="pain-title">Vấn đề {idx + 1}</div>
-          <div style={{ color: '#5A6A80' }}>{item}</div>
-        </div>
-      ))}
+      <div className="pain-image" style={{ gridColumn: '1 / -1', marginBottom: '24px' }}>
+        <img src="/assets/pain_points.png" alt="Sự quá tải trong giáo dục truyền thống" style={{ width: '100%', maxWidth: '700px', margin: '0 auto', borderRadius: '16px', boxShadow: '0 8px 32px rgba(220, 38, 38, 0.1)' }} />
+      </div>
+      <div className="pain-card">
+        <div className="pain-icon">📄</div>
+        <div className="pain-title">Quản lý phân mảnh</div>
+        <div style={{ color: '#5A6A80' }}>Dữ liệu lưu trữ rải rác trên nhiều file Excel, Zalo, Drive khiến việc tra cứu mất hàng giờ đồng hồ.</div>
+      </div>
+      <div className="pain-card">
+        <div className="pain-icon">⏳</div>
+        <div className="pain-title">Tốn thời gian chấm bài</div>
+        <div className="pain-desc" style={{ color: '#5A6A80' }}>Giáo viên kiệt sức vì phải chấm điểm thủ công, dẫn đến hiệu suất giảng dạy trên lớp giảm sút.</div>
+      </div>
+      <div className="pain-card">
+        <div className="pain-icon">📉</div>
+        <div className="pain-title">Thiếu báo cáo Real-time</div>
+        <div className="pain-desc" style={{ color: '#5A6A80' }}>Ban Giám Hiệu, Chủ Trung tâm không nắm được tình hình doanh thu và chất lượng học sinh tức thì.</div>
+      </div>
     </div>
     <div className="pain-cost reveal">
-      {content.pain_points?.cost_note || 'Chi phí thực sự bạn đang mất mỗi tháng là bao nhiêu?'}
+      Chi phí ẩn do sai sót dữ liệu và vận hành thủ công đang ăn mòn lợi nhuận của bạn mỗi ngày.
     </div>
   </div>
 </section>
@@ -217,21 +218,28 @@ export default function AppBody() {
 <section className="section" style={{ background: '#FAFAFA' }}>
   <div className="container text-center reveal">
     <div className="badge" style={{ background: '#E0F2FE', color: '#0369A1', borderColor: '#BAE6FD' }}>Công nghệ lõi</div>
-    <h2 className="section-title">{content.ai_section?.title || 'AI KHÔNG CHỈ HỖ TRỢ – AI TRỞ THÀNH NHÂN SỰ SỐ'}</h2>
+    <h2 className="section-title">AI – Nhân Sự Số Đắc Lực Nhất Của Bạn</h2>
     
+    <div style={{ marginBottom: '40px' }} className="reveal">
+      <img src="/assets/ai_tech.png" alt="Hệ sinh thái AI LSE" style={{ width: '100%', maxWidth: '800px', margin: '0 auto', borderRadius: '16px', boxShadow: '0 8px 32px rgba(3, 105, 161, 0.15)' }} />
+    </div>
+
     <div className="ai-flow-container">
-      {(content.ai_section?.features || 'Tạo đề tự động\nSoạn bài nhanh\nPhân tích học sinh').split('\n').filter(Boolean).map((item, idx) => {
-         const icons = ['📄', '⚡', '📊'];
-         return (
-          <div className="ai-step reveal" key={idx}>
-            <div className="ai-step-icon">{icons[idx] || '⚙️'}</div>
-            <div className="ai-step-title">{item}</div>
-          </div>
-         );
-      })}
+      <div className="ai-step reveal">
+        <div className="ai-step-icon">⚡</div>
+        <div className="ai-step-title">Tạo đề tự động (30s)</div>
+      </div>
+      <div className="ai-step reveal">
+        <div className="ai-step-icon">🤖</div>
+        <div className="ai-step-title">Chấm điểm & Phân tích AI</div>
+      </div>
+      <div className="ai-step reveal">
+        <div className="ai-step-icon">📈</div>
+        <div className="ai-step-title">Báo cáo năng lực cá nhân hóa</div>
+      </div>
     </div>
     <div className="ai-closing reveal">
-      {content.ai_section?.closing || 'AI giúp giảm tải cho giáo viên và tăng hiệu quả gấp nhiều lần'}
+      Giải phóng 80% áp lực hành chính để tập trung 100% vào chuyên môn giảng dạy.
     </div>
   </div>
 </section>
@@ -267,10 +275,10 @@ export default function AppBody() {
       <div className="about-text reveal">
         <div className="badge">Đơn vị phát triển</div>
         <h2 className="section-title" style={{"textAlign":"left","marginBottom":"12px","textWrap":"balance"}}>
-          {content.mission?.title || 'LAM SƠN EDUTECH – ĐƠN VỊ PHÁT TRIỂN HỆ ĐIỀU HÀNH GIÁO DỤC'}
+          Hệ Điều Hành Giáo Dục Toàn Diện
         </h2>
         <p style={{"fontSize":"16px","color":"var(--gray-600)","marginBottom":"24px","lineHeight":"1.7"}}>
-          {content.mission?.subtitle || 'Chúng tôi hiểu sâu sắc bài toán vận hành giáo dục và cung cấp một hệ sinh thái chuyển đổi số toàn diện, không chỉ là phần mềm.'}
+          Lam Sơn Edutech không bán phần mềm rời rạc. Chúng tôi cung cấp một hệ điều hành công nghệ nơi mọi dữ liệu từ tuyển sinh, giảng dạy đến tài chính đều được đồng bộ và tối ưu hóa bằng trí tuệ nhân tạo.
         </p>
         <div className="about-bullets">
           <div className="about-bullet">
@@ -304,11 +312,7 @@ export default function AppBody() {
         </div>
       </div>
       <div className="about-visual reveal">
-        {content.global?.logo_url ? (
-          <img src={content.global.logo_url} alt="Lam Sơn Edutech" style={{"height":"72px","marginBottom":"20px","background":"#fff","borderRadius":"12px","padding":"10px 16px"}} />
-        ) : (
-          <div style={{fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '20px'}}>Lam Sơn <span style={{color: '#ff0'}}>Edutech</span></div>
-        )}
+        <div style={{fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '20px'}}>Lam Sơn <span style={{color: '#ff0'}}>Edutech</span></div>
         <div className="about-mission-quote">
           "Số hóa giáo dục, đồng hành cùng giáo viên & trung tâm phát triển bền vững"
         </div>
@@ -323,8 +327,8 @@ export default function AppBody() {
           <span className="about-tag">B2B2C</span>
         </div>
         <div className="about-locations">
-          <div className="loc-item"><div className="loc-dot"></div><span><strong style={{"color":"#fff"}}>CS1:</strong> {content.global?.address_hp || '870–872 Lê Thanh Nghị, Tân Hưng, TP Hải Phòng'}</span></div>
-          <div className="loc-item"><div className="loc-dot"></div><span><strong style={{"color":"#fff"}}>CS2:</strong> {content.global?.address_hn || 'Ô 15–Đ13, KĐT Geleximco, Lê Trọng Tấn, Hoài Đức, Hà Nội'}</span></div>
+          <div className="loc-item"><div className="loc-dot"></div><span><strong style={{"color":"#fff"}}>CS1:</strong> 870–872 Lê Thanh Nghị, Tân Hưng, TP Hải Phòng</span></div>
+          <div className="loc-item"><div className="loc-dot"></div><span><strong style={{"color":"#fff"}}>CS2:</strong> Ô 15–Đ13, KĐT Geleximco, Lê Trọng Tấn, Hoài Đức, Hà Nội</span></div>
         </div>
       </div>
     </div>
@@ -407,20 +411,26 @@ export default function AppBody() {
 {/*  ─── ROI SECTION ───  */}
 <section className="roi-section">
   <div className="container text-center reveal">
-    <div className="badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'rgba(255,255,255,0.2)' }}>Hiệu quả thực tế</div>
-    <h2 className="section-title" style={{ color: '#FFF' }}>{content.roi_section?.title || 'Trung tâm 500 học viên:'}</h2>
+    <div className="badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#FFF', borderColor: 'rgba(255,255,255,0.2)' }}>Hiệu quả đầu tư</div>
+    <h2 className="section-title" style={{ color: '#FFF' }}>Kết quả thực tế cho Trung tâm quy mô 500 Học viên</h2>
     
     <div className="roi-grid">
-      {(content.roi_section?.stats || 'Giảm 4 nhân sự\nTiết kiệm 40 triệu/tháng').split('\n').filter(Boolean).map((item, idx) => (
-        <div className="roi-card reveal" key={idx}>
-          <div className="roi-value">{item.match(/\d+/) ? item.match(/\d+/)[0] : '100'}</div>
-          <div className="roi-label">{item}</div>
-        </div>
-      ))}
+      <div className="roi-card reveal">
+        <div className="roi-value">3x</div>
+        <div className="roi-label">Tăng hiệu suất làm việc của Giáo viên</div>
+      </div>
+      <div className="roi-card reveal">
+        <div className="roi-value">4</div>
+        <div className="roi-label">Giảm nhân sự vận hành hệ thống</div>
+      </div>
+      <div className="roi-card reveal">
+        <div className="roi-value">40M</div>
+        <div className="roi-label">Tiết kiệm chi phí vận hành mỗi tháng</div>
+      </div>
     </div>
     
     <div className="roi-payback reveal">
-      {content.roi_section?.payback || 'Hoàn vốn 1–3 tháng'}
+      Chỉ mất trung bình 2.5 tháng để hoàn vốn đầu tư nền tảng.
     </div>
   </div>
 </section>
@@ -428,17 +438,29 @@ export default function AppBody() {
 {/*  ─── CASE STUDY ───  */}
 <section className="section" id="case-study" style={{ background: '#F0F2F8' }}>
   <div className="container text-center reveal">
-    <div className="badge">Case Study</div>
-    <h2 className="section-title">Sự khác biệt rõ rệt</h2>
+    <div className="badge">Khác biệt cốt lõi</div>
+    <h2 className="section-title">Sự chuyển mình mạnh mẽ</h2>
     
+    <div style={{ marginBottom: '40px' }}>
+      <img src="/assets/case_study.png" alt="Tăng trưởng doanh thu và tự động hóa" style={{ width: '100%', maxWidth: '800px', margin: '0 auto', borderRadius: '16px', boxShadow: 'var(--shadow-lg)' }} />
+    </div>
+
     <div className="case-study-grid text-left reveal">
       <div className="cs-before">
         <div className="cs-tag">TRƯỚC KHI DÙNG LSE</div>
-        <div className="cs-text">{content.case_study?.before || 'Quản lý rối\nSai sót dữ liệu'}</div>
+        <div className="cs-text">
+          • Chấm bài IELTS mất 3 ngày/đề<br/>
+          • Không kiểm soát được tiến độ học tập của từng học viên<br/>
+          • Chi phí Marketing cao nhưng tỷ lệ tái đăng ký (Retention Rate) thấp do thiếu CSKH cá nhân hóa.
+        </div>
       </div>
       <div className="cs-after">
         <div className="cs-tag">SAU KHI DÙNG LSE</div>
-        <div className="cs-text">{content.case_study?.after || 'Tự động hóa hoàn toàn\nTiết kiệm thời gian'}</div>
+        <div className="cs-text">
+          • AI chấm và chữa bài Speaking/Writing IELTS tự động trong 30 giây.<br/>
+          • Báo cáo năng lực chi tiết từng học sinh gửi thẳng cho Phụ huynh qua Zalo.<br/>
+          • Tỷ lệ tái đăng ký khóa học tăng 45% nhờ theo dõi sát sao.
+        </div>
       </div>
     </div>
   </div>
@@ -586,14 +608,14 @@ export default function AppBody() {
           <li><div className="benefit-dot">📈</div> Có lộ trình chuyển đổi số riêng</li>
         </ul>
         <div className="consult-contact" style={{ marginTop: '40px' }}>
-          <div className="contact-row">📞 <strong>Hotline:</strong> &nbsp;<a href={`tel:${content.global?.hotline || '0936171111'}`} style={{"color":"var(--gold)","fontWeight":"700"}}>{content.global?.hotline || '0936.171.111'}</a></div>
-          <div className="contact-row">✉️ <strong>Email:</strong> &nbsp;<a href={`mailto:${content.global?.email || 'edutech.lamson@gmail.com'}`} style={{"color":"var(--gold)","fontWeight":"700"}}>{content.global?.email || 'edutech.lamson@gmail.com'}</a></div>
+          <div className="contact-row">📞 <strong>Hotline:</strong> &nbsp;<a href="tel:0936171111" style={{"color":"var(--gold)","fontWeight":"700"}}>0936.171.111</a></div>
+          <div className="contact-row">✉️ <strong>Email:</strong> &nbsp;<a href="mailto:edutech.lamson@gmail.com" style={{"color":"var(--gold)","fontWeight":"700"}}>edutech.lamson@gmail.com</a></div>
           <div className="contact-row">🌐 <strong>Website:</strong> &nbsp;<a href="https://lamsonedutech.vn" target="_blank" style={{"color":"var(--gold)","fontWeight":"700"}}>lamsonedutech.vn</a></div>
         </div>
       </div>
       <div className="reveal">
         <div className="form-card">
-          <div className="final-cta-quote">{content.final_cta?.text || 'Không cần quyết định hôm nay.\nChỉ cần thử 7 ngày.\nKết quả sẽ tự trả lời.'}</div>
+          <div className="final-cta-quote">Không cần quyết định hôm nay.<br/>Chỉ cần thử 7 ngày.<br/>Kết quả sẽ tự trả lời.</div>
           <div id="form-main">
             <div className="form-title">📋 Đăng ký nhận tư vấn & Demo</div>
             <form id="consult-form" onSubmit={handleFormSubmit} style={{ display: formStatus === "success" ? "none" : "block" }}>
@@ -667,8 +689,8 @@ export default function AppBody() {
               Cảm ơn bạn đã quan tâm đến <strong>Lam Sơn Edutech</strong>.<br />
               Chuyên gia tư vấn sẽ liên hệ với bạn trong vòng <strong>24 giờ</strong>.<br /><br />
               Trong thời gian chờ, bạn có thể liên hệ trực tiếp qua:<br />
-              📞 <a href={`tel:${content.global?.hotline || '0936171111'}`} style={{"color":"var(--gold)","fontWeight":"700"}}>{content.global?.hotline || '0936.171.111'}</a> &nbsp;|&nbsp;
-              ✉️ <a href={`mailto:${content.global?.email || 'edutech.lamson@gmail.com'}`} style={{"color":"var(--gold)","fontWeight":"700"}}>{content.global?.email || 'edutech.lamson@gmail.com'}</a>
+              📞 <a href="tel:0936171111" style={{"color":"var(--gold)","fontWeight":"700"}}>0936.171.111</a> &nbsp;|&nbsp;
+              ✉️ <a href="mailto:edutech.lamson@gmail.com" style={{"color":"var(--gold)","fontWeight":"700"}}>edutech.lamson@gmail.com</a>
             </div>
           </div>
         </div>
@@ -682,12 +704,8 @@ export default function AppBody() {
   <div className="container">
     <div className="footer-grid">
       <div>
-        {content.global?.logo_url ? (
-          <img src={content.global.logo_url} alt="Lam Sơn Edutech" style={{"height":"44px","background":"#fff","borderRadius":"8px","padding":"6px 12px","marginBottom":"8px"}} />
-        ) : (
-          <div style={{fontSize: '24px', fontWeight: 'bold', color: '#fff', marginBottom: '8px'}}>Lam Sơn <span style={{color: '#da251d'}}>Edutech</span></div>
-        )}
-        <div className="footer-slogan">Số hóa giáo dục, đồng hành cùng giáo viên & trung tâm phát triển bền vững.<br />Thuộc Tập đoàn Lam Sơn.</div>
+        <div style={{fontSize: '24px', fontWeight: 'bold', color: '#fff', marginBottom: '8px'}}>Lam Sơn <span style={{color: '#da251d'}}>Edutech</span></div>
+        <div className="footer-slogan">Số hóa giáo dục, đồng hành cùng trung tâm phát triển bền vững.<br />Thuộc Tập đoàn Lam Sơn.</div>
         <div className="footer-socials">
           <a href="https://facebook.com" target="_blank" className="social-btn" title="Facebook">📘</a>
           <a href="https://zalo.me" target="_blank" className="social-btn" title="Zalo">💬</a>

@@ -15,7 +15,6 @@ export default function AdminLayout() {
   const menu = [
     { name: 'Khách hàng (CRM)', path: '/admin/leads', icon: <Users size={18} /> },
     { name: 'Sản phẩm', path: '/admin/products', icon: <Package size={18} /> },
-    { name: 'Nội dung LDP', path: '/admin/content', icon: <FileText size={18} /> },
   ];
 
   return (
