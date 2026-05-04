@@ -745,11 +745,11 @@ export default function AppBody() {
       <div>
         <div className="footer-heading">Liên hệ</div>
         <ul className="footer-contact footer-links">
-          <li>📞 <a href={`tel:${content.global?.hotline || '0936171111'}`}>{content.global?.hotline || '0936.171.111'}</a></li>
-          <li>✉️ <a href={`mailto:${content.global?.email || 'edutech.lamson@gmail.com'}`}>{content.global?.email || 'edutech.lamson@gmail.com'}</a></li>
+          <li>📞 <a href="tel:0936171111">0936.171.111</a></li>
+          <li>✉️ <a href="mailto:edutech.lamson@gmail.com">edutech.lamson@gmail.com</a></li>
           <li>🌐 <a href="https://lamsonedutech.vn" target="_blank">lamsonedutech.vn</a></li>
-          <li>📍 {content.global?.address_hp || '870–872 Lê Thanh Nghị, Tân Hưng, TP Hải Phòng'}</li>
-          <li>📍 {content.global?.address_hn || 'Ô 15–Đ13, KĐT Geleximco, Hoài Đức, Hà Nội'}</li>
+          <li>📍 870–872 Lê Thanh Nghị, Tân Hưng, TP Hải Phòng</li>
+          <li>📍 Ô 15–Đ13, KĐT Geleximco, Hoài Đức, Hà Nội</li>
         </ul>
       </div>
     </div>
