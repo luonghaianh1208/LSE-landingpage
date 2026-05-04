@@ -1166,3 +1166,73 @@
       background: linear-gradient(to left, var(--white), transparent);
     }
     .testi-card { min-width: 350px; }
+    
+    /* ─── NEW MARKETING SECTIONS CSS ─── */
+    
+    /* Hero Tech Background */
+    .tech-bg {
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(229, 162, 17, 0.15), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(42, 74, 140, 0.4), transparent 25%),
+        linear-gradient(rgba(27, 47, 94, 0.9), rgba(15, 29, 58, 0.95)),
+        url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20z" fill="rgba(255,255,255,0.02)" fill-rule="evenodd"/></svg>');
+    }
+
+    /* Pain Points (Nỗi đau) */
+    .pain-section { background: #FAFAFA; border-top: 1px solid #E2E6F0; border-bottom: 1px solid #E2E6F0; }
+    .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 40px; }
+    .pain-card {
+      background: #FFF; border: 1px solid #FEE2E2; border-radius: 12px; padding: 24px;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.05); text-align: left;
+    }
+    .pain-icon { font-size: 32px; margin-bottom: 16px; color: #DC2626; }
+    .pain-title { font-size: 18px; font-weight: 700; color: #1B2F5E; margin-bottom: 8px; }
+    .pain-cost { 
+      background: #FEF2F2; color: #DC2626; font-weight: 700; font-size: 20px;
+      padding: 16px 24px; border-radius: 12px; margin-top: 40px; text-align: center; border: 1px solid #FECACA;
+    }
+
+    /* AI Flow (Nhân sự số) */
+    .ai-flow-container { display: flex; align-items: stretch; justify-content: space-between; gap: 24px; margin-top: 48px; flex-wrap: wrap; }
+    .ai-step {
+      flex: 1; min-width: 200px; text-align: center; background: #F0F9FF; padding: 32px 24px;
+      border-radius: 16px; border: 1px solid #BAE6FD; position: relative;
+    }
+    .ai-step-icon { font-size: 40px; margin-bottom: 16px; display: inline-block; background: #FFF; width: 80px; height: 80px; line-height: 80px; border-radius: 50%; box-shadow: 0 4px 12px rgba(3, 105, 161, 0.1); }
+    .ai-step-title { font-size: 18px; font-weight: 700; color: #0369A1; }
+    @media(min-width: 769px) {
+      .ai-step:not(:last-child)::after {
+        content: '→'; position: absolute; right: -20px; top: 50%; transform: translateY(-50%); font-size: 24px; color: #0369A1; z-index: 2;
+      }
+    }
+    .ai-closing { font-size: 20px; font-weight: 700; color: #1B2F5E; text-align: center; margin-top: 40px; padding: 24px; background: linear-gradient(90deg, #F0F2F8, #E0F2FE); border-radius: 12px; }
+
+    /* ROI Stats */
+    .roi-section { background: #0F1D3A; color: #FFF; padding: 80px 0; }
+    .roi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-top: 48px; }
+    .roi-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 32px; text-align: center; backdrop-filter: blur(10px);
+    }
+    .roi-value { font-size: 48px; font-weight: 800; color: var(--gold); line-height: 1.1; margin-bottom: 12px; }
+    .roi-label { font-size: 16px; color: rgba(255,255,255,0.8); }
+    .roi-payback { font-size: 24px; font-weight: 700; color: #10B981; margin-top: 48px; padding: 20px; border-top: 1px dashed rgba(255,255,255,0.2); }
+
+    /* Case Study */
+    .case-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 16px; overflow: hidden; margin-top: 40px; box-shadow: var(--shadow-lg); }
+    .cs-before, .cs-after { padding: 40px; }
+    .cs-before { background: #FEF2F2; border-right: 1px solid #FECACA; }
+    .cs-after { background: #F0FDF4; }
+    .cs-tag { display: inline-block; padding: 6px 12px; border-radius: 50px; font-weight: 700; font-size: 14px; margin-bottom: 20px; }
+    .cs-before .cs-tag { background: #FECACA; color: #991B1B; }
+    .cs-after .cs-tag { background: #BBF7D0; color: #166534; }
+    .cs-text { font-size: 18px; color: #1B2F5E; line-height: 1.6; white-space: pre-line; }
+    @media(max-width: 768px) {
+      .case-study-grid { grid-template-columns: 1fr; }
+      .cs-before { border-right: none; border-bottom: 1px solid #FECACA; }
+    }
+
+    /* Final CTA Form */
+    .final-cta-quote {
+      font-size: 22px; font-weight: 800; color: #1B2F5E; line-height: 1.5; text-align: left; margin-bottom: 24px;
+      padding-left: 20px; border-left: 4px solid var(--gold); white-space: pre-line;
+    }
