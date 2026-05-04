@@ -97,7 +97,7 @@ export default function AppBody() {
 <nav id="navbar">
   <div className="nav-inner">
     <a href="#hero" className="nav-logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-      <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#1B2F5E', letterSpacing: '-0.5px' }}>Lam Sơn <span style={{ color: '#da251d' }}>Edutech</span></span>
+      <img src="/assets/logo.png" alt="Lam Sơn Edutech Logo" style={{ height: '48px' }} />
     </a>
     <ul className="nav-links" id="nav-links">
       <li><a href="#about">Về chúng tôi</a></li>
@@ -206,6 +206,11 @@ export default function AppBody() {
         <div className="pain-icon">📉</div>
         <div className="pain-title">Thiếu báo cáo Real-time</div>
         <div className="pain-desc" style={{ color: '#5A6A80' }}>Ban Giám Hiệu, Chủ Trung tâm không nắm được tình hình doanh thu và chất lượng học sinh tức thì.</div>
+      </div>
+      <div className="pain-card">
+        <div className="pain-icon">🤖</div>
+        <div className="pain-title">Tụt hậu công nghệ</div>
+        <div className="pain-desc" style={{ color: '#5A6A80' }}>Sử dụng công cụ rời rạc, cũ kỹ khiến trung tâm mất lợi thế cạnh tranh và không thể mở rộng quy mô.</div>
       </div>
     </div>
     <div className="pain-cost reveal">
@@ -445,21 +450,35 @@ export default function AppBody() {
       <img src="/assets/case_study.png" alt="Tăng trưởng doanh thu và tự động hóa" style={{ width: '100%', maxWidth: '800px', margin: '0 auto', borderRadius: '16px', boxShadow: 'var(--shadow-lg)' }} />
     </div>
 
-    <div className="case-study-grid text-left reveal">
-      <div className="cs-before">
-        <div className="cs-tag">TRƯỚC KHI DÙNG LSE</div>
-        <div className="cs-text">
-          • Chấm bài IELTS mất 3 ngày/đề<br/>
-          • Không kiểm soát được tiến độ học tập của từng học viên<br/>
-          • Chi phí Marketing cao nhưng tỷ lệ tái đăng ký (Retention Rate) thấp do thiếu CSKH cá nhân hóa.
+    <div className="cs-cards-container text-left reveal">
+      <div className="cs-card">
+        <div className="cs-card-header">
+          <div className="cs-icon">📝</div>
+          <div className="cs-title">Chấm chữa bài & Khảo thí</div>
+        </div>
+        <div className="cs-body">
+          <div className="cs-before-item"><span className="cs-label-red">Trước đây:</span> Chấm bài IELTS Speaking/Writing thủ công, mất 3-5 ngày/đề, giáo viên luôn trong trạng thái quá tải.</div>
+          <div className="cs-after-item"><span className="cs-label-green">LSE AI:</span> Chấm tự động cực chuẩn bằng AI chỉ trong 30 giây, giải phóng 80% thời gian cho giáo viên.</div>
         </div>
       </div>
-      <div className="cs-after">
-        <div className="cs-tag">SAU KHI DÙNG LSE</div>
-        <div className="cs-text">
-          • AI chấm và chữa bài Speaking/Writing IELTS tự động trong 30 giây.<br/>
-          • Báo cáo năng lực chi tiết từng học sinh gửi thẳng cho Phụ huynh qua Zalo.<br/>
-          • Tỷ lệ tái đăng ký khóa học tăng 45% nhờ theo dõi sát sao.
+      <div className="cs-card">
+        <div className="cs-card-header">
+          <div className="cs-icon">👨‍👩‍👧‍👦</div>
+          <div className="cs-title">Quản lý Học viên (CRM)</div>
+        </div>
+        <div className="cs-body">
+          <div className="cs-before-item"><span className="cs-label-red">Trước đây:</span> CSKH chậm trễ, không nắm được tiến độ học tập, tỷ lệ tái đăng ký (Retention Rate) thấp dưới 40%.</div>
+          <div className="cs-after-item"><span className="cs-label-green">LSE AI:</span> Báo cáo năng lực cá nhân hóa tự động gửi qua Zalo, tỷ lệ tái đăng ký tăng vọt lên 85%.</div>
+        </div>
+      </div>
+      <div className="cs-card">
+        <div className="cs-card-header">
+          <div className="cs-icon">📊</div>
+          <div className="cs-title">Nền nếp & Vận hành</div>
+        </div>
+        <div className="cs-body">
+          <div className="cs-before-item"><span className="cs-label-red">Trước đây:</span> Ban Giám Hiệu mù mờ thông tin, số liệu thống kê doanh thu, điểm danh rời rạc trên Excel.</div>
+          <div className="cs-after-item"><span className="cs-label-green">LSE AI:</span> Dashboard Real-time mọi chỉ số trực quan, kiểm soát toàn bộ hoạt động trung tâm qua 1 màn hình.</div>
         </div>
       </div>
     </div>
@@ -704,7 +723,7 @@ export default function AppBody() {
   <div className="container">
     <div className="footer-grid">
       <div>
-        <div style={{fontSize: '24px', fontWeight: 'bold', color: '#fff', marginBottom: '8px'}}>Lam Sơn <span style={{color: '#da251d'}}>Edutech</span></div>
+        <img src="/assets/logo.png" alt="Lam Sơn Edutech Logo" style={{ height: '48px', marginBottom: '16px', background: '#fff', padding: '6px 12px', borderRadius: '8px' }} />
         <div className="footer-slogan">Số hóa giáo dục, đồng hành cùng trung tâm phát triển bền vững.<br />Thuộc Tập đoàn Lam Sơn.</div>
         <div className="footer-socials">
           <a href="https://facebook.com" target="_blank" className="social-btn" title="Facebook">📘</a>
