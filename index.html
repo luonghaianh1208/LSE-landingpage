@@ -1040,6 +1040,24 @@
     
     .product-actions { display: flex; gap: 12px; margin-top: auto; padding-top: 20px; }
     .product-actions .btn { padding: 10px 16px; font-size: 13px; flex: 1; justify-content: center; text-align: center; }
+  
+    /* ─── FEATURED ROBOT ─── */
+    .product-card.featured-robot {
+      background: linear-gradient(145deg, #1A1A2E 0%, #16213E 100%);
+      color: var(--white);
+      border: 1px solid #0F3460;
+      box-shadow: 0 8px 32px rgba(233, 69, 96, 0.2);
+    }
+    .featured-robot::before { opacity: 1; background: linear-gradient(90deg, #E94560, #FF6B6B); }
+    .featured-robot .product-icon { background: rgba(233, 69, 96, 0.2); color: #FF6B6B; }
+    .featured-robot .product-name { color: var(--white); }
+    .featured-robot .product-desc { color: rgba(255,255,255,.7); }
+    .featured-robot .product-features li { color: rgba(255,255,255,.7); }
+    .featured-robot .status-live { background: rgba(233, 69, 96, 0.2); color: #FF6B6B; }
+    .featured-robot .segment-badge { background: rgba(255,255,255,.12); color: rgba(255,255,255,.7); }
+    .featured-robot .product-actions .btn-outline[style*="background:var(--navy)"] { background: #E94560 !important; color: #fff !important; }
+    .featured-robot .product-actions .btn-outline[style*="border:1px solid var(--gray-200)"] { border-color: rgba(255,255,255,.3) !important; color: #fff !important; }
+
   </style>
 </head>
 <body>
@@ -1051,8 +1069,7 @@
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">
-      <div class="nav-logo-icon">🎓</div>
-      <span>Lam Sơn Edutech</span>
+      <img src="assets/logo.png" alt="Lam Sơn Edutech Logo" style="height: 48px;">
     </a>
     <ul class="nav-links" id="nav-links">
       <li><a href="#about">Về chúng tôi</a></li>
@@ -1122,7 +1139,7 @@
             <div class="hero-card-desc">10 giải pháp công nghệ — phủ sóng toàn bộ hành trình giáo dục Việt Nam</div>
             <div class="hero-product-list">
               <span class="hero-product-chip">🧑‍🏫 Trợ Lý GV</span>
-              <span class="hero-product-chip">🎓 CheAI LMS</span>
+              <span class="hero-product-chip">🎓 Hệ thống mini LMS AI cá nhân hóa lộ trình học tập</span>
               <span class="hero-product-chip">🏫 Nề Nếp AI</span>
               <span class="hero-product-chip">🌍 IELTS AI</span>
               <span class="hero-product-chip">🚀 Hướng Nghiệp</span>
@@ -1238,7 +1255,7 @@
         </div>
       </div>
       <div class="about-visual reveal">
-        <div class="about-logo-large">Lam Sơn<br /><span>Edutech</span></div>
+        <img src="assets/logo.png" alt="Lam Sơn Edutech" style="height: 80px; margin-bottom: 20px; filter: brightness(0) invert(1);">
         <div class="about-mission-quote">
           "Số hóa giáo dục, đồng hành cùng giáo viên & trung tâm phát triển bền vững"
         </div>
@@ -1334,7 +1351,7 @@
         </div>
       </div>
 
-      <!-- 2. CheAI LMS -->
+      <!-- 2. Hệ thống mini LMS AI cá nhân hóa lộ trình học tập -->
       <div class="product-card reveal" data-cat="trungTam">
         <div class="product-header">
           <div class="product-icon">🎓</div>
@@ -1343,7 +1360,7 @@
             <span class="segment-badge">Trung tâm / Trường học</span>
           </div>
         </div>
-        <div class="product-name">CheAI LMS</div>
+        <div class="product-name">Hệ thống mini LMS AI cá nhân hóa lộ trình học tập</div>
         <div class="product-desc">Hệ thống quản lý học tập thế hệ mới, tích hợp Gemini AI vào toàn bộ vòng đời dạy – học – đánh giá. Tự động hóa chấm bài, lộ trình học cá nhân hóa.</div>
         <ul class="product-features">
           <li>Quản lý khóa học, lớp học, điểm danh tự động</li>
@@ -1357,7 +1374,7 @@
         </div>
       </div>
 
-      <!-- 3. Nề Nếp Học Đường AI -->
+      <!-- 3. Phần mềm quản lí nền nếp học đường -->
       <div class="product-card reveal" data-cat="nhaTruong">
         <div class="product-header">
           <div class="product-icon">🏫</div>
@@ -1366,7 +1383,7 @@
             <span class="segment-badge">Trường THPT</span>
           </div>
         </div>
-        <div class="product-name">Nề Nếp Học Đường AI</div>
+        <div class="product-name">Phần mềm quản lí nền nếp học đường</div>
         <div class="product-desc">Ứng dụng quản lý nề nếp, kỷ luật và hành vi học sinh cho trường THPT — thay thế hoàn toàn sổ giấy và bảng tính Excel rời rạc.</div>
         <ul class="product-features">
           <li>Ghi nhận vi phạm, thành tích trong vài giây</li>
@@ -1428,7 +1445,7 @@
 
       
       <!-- 7. Robot Học Tập AI -->
-      <div class="product-card reveal" data-cat="nhaTruong">
+      <div class="product-card reveal featured-robot" data-cat="nhaTruong">
         <div class="product-header">
           <div class="product-icon">🤖</div>
           <div class="product-badges">
@@ -1594,14 +1611,14 @@
         </div>
       </div>
       <div class="testi-card">
-        <div class="testi-quote">"Tôi rất bất ngờ với Nề Nếp Học Đường AI. Báo cáo tự động mỗi tuần giúp Ban Giám Hiệu nắm bắt tình hình tức thì, không phải chờ giáo viên nộp sổ."</div>
+        <div class="testi-quote">"Tôi rất bất ngờ với Phần mềm quản lí nền nếp học đường. Báo cáo tự động mỗi tuần giúp Ban Giám Hiệu nắm bắt tình hình tức thì, không phải chờ giáo viên nộp sổ."</div>
         <div class="testi-author">
           <div class="testi-avatar">👨‍💼</div>
           <div class="testi-info"><span class="testi-name">Thầy Phạm V. Tuấn</span><span class="testi-role">Hiệu phó trường THPT</span></div>
         </div>
       </div>
       <div class="testi-card">
-        <div class="testi-quote">"Hệ thống Khảo thí và CheAI LMS giúp trung tâm mình tự động hóa khâu chấm bài IELTS. Doanh thu tăng 30% vì giáo viên nhận được nhiều lớp hơn."</div>
+        <div class="testi-quote">"Hệ thống Khảo thí và Hệ thống mini LMS AI cá nhân hóa lộ trình học tập giúp trung tâm mình tự động hóa khâu chấm bài IELTS. Doanh thu tăng 30% vì giáo viên nhận được nhiều lớp hơn."</div>
         <div class="testi-author">
           <div class="testi-avatar">🏢</div>
           <div class="testi-info"><span class="testi-name">Anh Lê T. Phong</span><span class="testi-role">Giám đốc Trung tâm Anh Ngữ</span></div>
@@ -1631,14 +1648,14 @@
         </div>
       </div>
       <div class="testi-card">
-        <div class="testi-quote">"Tôi rất bất ngờ với Nề Nếp Học Đường AI. Báo cáo tự động mỗi tuần giúp Ban Giám Hiệu nắm bắt tình hình tức thì, không phải chờ giáo viên nộp sổ."</div>
+        <div class="testi-quote">"Tôi rất bất ngờ với Phần mềm quản lí nền nếp học đường. Báo cáo tự động mỗi tuần giúp Ban Giám Hiệu nắm bắt tình hình tức thì, không phải chờ giáo viên nộp sổ."</div>
         <div class="testi-author">
           <div class="testi-avatar">👨‍💼</div>
           <div class="testi-info"><span class="testi-name">Thầy Phạm V. Tuấn</span><span class="testi-role">Hiệu phó trường THPT</span></div>
         </div>
       </div>
       <div class="testi-card">
-        <div class="testi-quote">"Hệ thống Khảo thí và CheAI LMS giúp trung tâm mình tự động hóa khâu chấm bài IELTS. Doanh thu tăng 30% vì giáo viên nhận được nhiều lớp hơn."</div>
+        <div class="testi-quote">"Hệ thống Khảo thí và Hệ thống mini LMS AI cá nhân hóa lộ trình học tập giúp trung tâm mình tự động hóa khâu chấm bài IELTS. Doanh thu tăng 30% vì giáo viên nhận được nhiều lớp hơn."</div>
         <div class="testi-author">
           <div class="testi-avatar">🏢</div>
           <div class="testi-info"><span class="testi-name">Anh Lê T. Phong</span><span class="testi-role">Giám đốc Trung tâm Anh Ngữ</span></div>
@@ -1776,8 +1793,8 @@
                 <select class="form-select" id="f-product">
                   <option value="">-- Chọn sản phẩm (có thể bỏ qua) --</option>
                   <option>Trợ Lý Giáo Viên Toàn Năng</option>
-                  <option>CheAI LMS</option>
-                  <option>Nề Nếp Học Đường AI</option>
+                  <option>Hệ thống mini LMS AI cá nhân hóa lộ trình học tập</option>
+                  <option>Phần mềm quản lí nền nếp học đường</option>
                   <option>IELTS Master AI</option>
                   <option>Tư Vấn Hướng Nghiệp AI</option>
                   <option>Nền Tảng Quản Lý Khảo Thí</option>
@@ -1833,8 +1850,8 @@
         <div class="footer-heading">Sản phẩm</div>
         <ul class="footer-links">
           <li><a href="#products">Trợ Lý Giáo Viên</a></li>
-          <li><a href="#products">CheAI LMS</a></li>
-          <li><a href="#products">Nề Nếp Học Đường AI</a></li>
+          <li><a href="#products">Hệ thống mini LMS AI cá nhân hóa lộ trình học tập</a></li>
+          <li><a href="#products">Phần mềm quản lí nền nếp học đường</a></li>
           <li><a href="#products">IELTS Master AI</a></li>
           <li><a href="#products">Tư Vấn Hướng Nghiệp AI</a></li>
           <li><a href="#products">Nền Tảng Khảo Thí</a></li>
@@ -1997,8 +2014,8 @@
     //   ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
     //   CREATE POLICY "anon insert" ON leads FOR INSERT TO anon WITH CHECK (true);
     // ────────────────────────────────────────────────────────────────
-    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-    const SUPABASE_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    const SUPABASE_URL = 'https://nxjaymjkqwqdfislrhhj.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_bCEI8m1m9n8JRITSRz6APw_of_IslJ2';
 
     try {
       if (SUPABASE_URL !== 'YOUR_SUPABASE_URL') {

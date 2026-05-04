@@ -312,7 +312,7 @@ Trang trọng ←———————————————→ Thân mật
 | **Kênh tiếp cận** | Facebook cá nhân, nhóm Facebook giáo viên, Zalo |
 | **Tông tiếp cận** | Thân thiện, gần gũi, truyền cảm hứng — như đồng nghiệp nói chuyện |
 | **CTA hiệu quả** | "Thử ngay miễn phí", "Xem demo 3 phút", "Tham gia cộng đồng" |
-| **Sản phẩm phù hợp** | Trợ Lý Giáo Viên Toàn Năng, CheAI LMS |
+| **Sản phẩm phù hợp** | Trợ Lý Giáo Viên Toàn Năng, Hệ thống mini LMS AI cá nhân hóa lộ trình học tập |
 
 #### Phân khúc 2: Nhà trường / Sở GD&ĐT
 
@@ -324,7 +324,7 @@ Trang trọng ←———————————————→ Thân mật
 | **Kênh tiếp cận** | Hội thảo, workshop, proposal trực tiếp, LinkedIn, email chính thức |
 | **Tông tiếp cận** | Chuyên nghiệp, uy tín, có số liệu và case study thực tế |
 | **CTA hiệu quả** | "Đặt lịch khảo sát", "Nhận báo cáo tóm tắt", "Tư vấn giải pháp" |
-| **Sản phẩm phù hợp** | Nề Nếp Học Đường AI, CheAI LMS, Tư Vấn Hướng Nghiệp AI |
+| **Sản phẩm phù hợp** | Phần mềm quản lí nền nếp học đường, Hệ thống mini LMS AI cá nhân hóa lộ trình học tập, Tư Vấn Hướng Nghiệp AI |
 
 #### Phân khúc 3: Trung tâm / Edtech
 
@@ -336,7 +336,7 @@ Trang trọng ←———————————————→ Thân mật
 | **Kênh tiếp cận** | Facebook, Zalo OA, hội nhóm chủ trung tâm, giới thiệu |
 | **Tông tiếp cận** | Thực dụng, tập trung vào ROI, chứng minh bằng số liệu cụ thể |
 | **CTA hiệu quả** | "Xem demo trực tiếp", "Tính ROI", "Nhận báo giá" |
-| **Sản phẩm phù hợp** | CheAI LMS, Trợ Lý Giáo Viên Toàn Năng, IELTS Master AI |
+| **Sản phẩm phù hợp** | Hệ thống mini LMS AI cá nhân hóa lộ trình học tập, Trợ Lý Giáo Viên Toàn Năng, IELTS Master AI |
 
 #### Phân khúc 4: Doanh nghiệp (đang phát triển)
 
@@ -348,7 +348,7 @@ Trang trọng ←———————————————→ Thân mật
 | **Kênh tiếp cận** | LinkedIn, email B2B, referral từ trường học |
 | **Tông tiếp cận** | Formal, ROI-focused, enterprise mindset |
 | **CTA hiệu quả** | "Đặt lịch tư vấn", "Nhận proposal", "Pilot trial" |
-| **Sản phẩm phù hợp** | CheAI LMS, Agent Kit, Subagent Workflow |
+| **Sản phẩm phù hợp** | Hệ thống mini LMS AI cá nhân hóa lộ trình học tập, Agent Kit, Subagent Workflow |
 
 ---
 
@@ -480,7 +480,7 @@ Preheader: [Câu mở rộng cho subject, 80–100 ký tự]
 │  DÀNH CHO       │  DÀNH CHO       │  DÀNH CHO               │
 │  GIÁO VIÊN      │  NHÀ TRƯỜNG     │  TRUNG TÂM              │
 ├─────────────────┼─────────────────┼─────────────────────────┤
-│ Trợ Lý GV       │ Nề Nếp Học      │ CheAI LMS               │
+│ Trợ Lý GV       │ Nề Nếp Học      │ Hệ thống mini LMS AI cá nhân hóa lộ trình học tập               │
 │ Toàn Năng       │ Đường AI        │ IELTS Master AI         │
 │                 │ Tư Vấn Hướng    │                         │
 │                 │ Nghiệp AI       │                         │
@@ -499,14 +499,14 @@ Preheader: [Câu mở rộng cho subject, 80–100 ký tự]
 - **USP:** Tích hợp đa chức năng trong 1 app, xuất file Word chuẩn CV 5512, không cần cài đặt
 - **Keyword content:** soạn giáo án AI, ra đề kiểm tra tự động, OCR sách giáo khoa
 
-#### 2. CheAI LMS
+#### 2. Hệ thống mini LMS AI cá nhân hóa lộ trình học tập
 - **Tagline ngắn:** "Nền tảng học tập thế hệ mới"
 - **Giải quyết:** Quản lý khóa học, chấm bài tự động, báo cáo học tập, trợ lý AI học viên
 - **Đối tượng:** Trung tâm luyện thi, trường học, giáo viên tự do
 - **USP:** AI đồng hành cùng học viên suốt quá trình, không chỉ quản lý hành chính
 - **Keyword content:** LMS AI, quản lý trung tâm, phần mềm dạy học
 
-#### 3. Nề Nếp Học Đường AI
+#### 3. Phần mềm quản lí nền nếp học đường
 - **Tagline ngắn:** "Quản lý kỷ luật thông minh, nắm bắt ngay tình hình"
 - **Giải quyết:** Theo dõi nề nếp học sinh theo thời gian thực, báo cáo tự động
 - **Đối tượng:** Trường THPT (BGH, GVCN, Ban Quản Sinh)
@@ -571,7 +571,7 @@ Khi viết nội dung, hãy dẫn chứng bằng:
 
 - Số năm kinh nghiệm của Tập đoàn Lam Sơn (~20 năm trong giáo dục)
 - Đội ngũ chuyên gia từ ĐH Quốc gia Hà Nội, ĐH Sư phạm Hà Nội
-- Sản phẩm đã triển khai thực tế (Nề Nếp Học Đường AI đang hoạt động tại trường THPT)
+- Sản phẩm đã triển khai thực tế (Phần mềm quản lí nền nếp học đường đang hoạt động tại trường THPT)
 - Hệ sinh thái 8 sản phẩm đa dạng
 - 2 cơ sở tại Hải Phòng và Hà Nội
 

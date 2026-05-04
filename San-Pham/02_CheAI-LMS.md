@@ -7,7 +7,7 @@
 
 ## 1. Giới thiệu sản phẩm
 
-**CheAI LMS** là hệ thống quản lý học tập (Learning Management System) thế hệ mới, được tích hợp trí tuệ nhân tạo Gemini AI vào toàn bộ vòng đời dạy – học – đánh giá. Không chỉ là phần mềm quản lý thông thường, CheAI LMS giúp giáo viên và trung tâm giáo dục chuyển hóa cách thức vận hành sang một mô hình thông minh, tự động hóa và cá nhân hóa cao.
+**Hệ thống mini LMS AI cá nhân hóa lộ trình học tập** là hệ thống quản lý học tập (Learning Management System) thế hệ mới, được tích hợp trí tuệ nhân tạo Gemini AI vào toàn bộ vòng đời dạy – học – đánh giá. Không chỉ là phần mềm quản lý thông thường, Hệ thống mini LMS AI cá nhân hóa lộ trình học tập giúp giáo viên và trung tâm giáo dục chuyển hóa cách thức vận hành sang một mô hình thông minh, tự động hóa và cá nhân hóa cao.
 
 Sản phẩm được xây dựng để phục vụ nhu cầu của các trung tâm đào tạo, trường học và tổ chức giáo dục mong muốn nâng cấp trải nghiệm dạy học lên một tầm cao mới.
 
@@ -54,7 +54,7 @@ Sản phẩm được xây dựng để phục vụ nhu cầu của các trung t
 
 ## 4. Điểm khác biệt & Lợi thế
 
-| Tiêu chí | CheAI LMS |
+| Tiêu chí | Hệ thống mini LMS AI cá nhân hóa lộ trình học tập |
 |---|---|
 | **AI tích hợp sâu** | AI không chỉ chấm bài — AI đồng hành cùng học viên suốt quá trình học |
 | **Triển khai nhanh** | Không yêu cầu hạ tầng phức tạp, chạy ngay trên cloud |

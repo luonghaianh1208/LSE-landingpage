@@ -8,7 +8,7 @@
 
 ## 1. Giới thiệu sản phẩm
 
-**Nề Nếp Học Đường AI** là ứng dụng quản lý nề nếp, kỷ luật và hành vi học sinh dành cho các trường THPT — được tích hợp trí tuệ nhân tạo để tự động hóa việc theo dõi, thống kê và báo cáo.
+**Phần mềm quản lí nền nếp học đường** là ứng dụng quản lý nề nếp, kỷ luật và hành vi học sinh dành cho các trường THPT — được tích hợp trí tuệ nhân tạo để tự động hóa việc theo dõi, thống kê và báo cáo.
 
 Thay vì ghi chép thủ công bằng sổ giấy hoặc bảng tính Excel rời rạc, ứng dụng này giúp Ban Quản Sinh, giáo viên chủ nhiệm và Ban Giám Hiệu nắm bắt toàn bộ tình hình nề nếp học sinh theo thời gian thực, trên mọi thiết bị.
 
@@ -55,7 +55,7 @@ Thay vì ghi chép thủ công bằng sổ giấy hoặc bảng tính Excel rờ
 
 ## 4. Điểm khác biệt & Lợi thế
 
-| Tiêu chí | Nề Nếp Học Đường AI |
+| Tiêu chí | Phần mềm quản lí nền nếp học đường |
 |---|---|
 | **Đã thực chiến** | Đang được triển khai và sử dụng thực tế tại trường THPT |
 | **Thay thế sổ giấy** | Chấm dứt hoàn toàn việc ghi chép thủ công, tổng hợp excel |
