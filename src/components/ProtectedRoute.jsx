@@ -6,6 +6,7 @@ export default function ProtectedRoute() {
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [debugInfo, setDebugInfo] = useState('');
 
   useEffect(() => {
     let mounted = true;
@@ -22,15 +23,29 @@ export default function ProtectedRoute() {
 
       if (mounted) setIsAuthenticated(true);
 
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('role')
-        .eq('id', session.user.id)
-        .single();
+      try {
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', session.user.id)
+          .single();
 
-      if (mounted) {
-        setIsAdmin(data?.role === 'admin');
-        setLoading(false);
+        if (mounted) {
+          if (error) {
+            setDebugInfo(`Lỗi truy vấn: ${error.message} (UID: ${session.user.id})`);
+          } else if (!data) {
+            setDebugInfo(`Không tìm thấy profile cho UID: ${session.user.id}`);
+          } else {
+            setDebugInfo(`Profile Role: "${data.role}" (UID: ${session.user.id})`);
+            setIsAdmin(data.role === 'admin');
+          }
+          setLoading(false);
+        }
+      } catch (err) {
+        if (mounted) {
+          setDebugInfo(`Exception: ${err.message}`);
+          setLoading(false);
+        }
       }
     };
 
@@ -58,6 +73,9 @@ export default function ProtectedRoute() {
     <div style={{ padding: '40px', textAlign: 'center', fontFamily: 'sans-serif' }}>
       <h2 style={{ color: '#1B2F5E' }}>Truy cập bị từ chối</h2>
       <p>Tài khoản của bạn chưa được cấp quyền Admin.</p>
+      <div style={{ background: '#f8d7da', color: '#721c24', padding: '10px', borderRadius: '5px', marginTop: '10px', fontSize: '14px', wordBreak: 'break-all' }}>
+        <strong>Thông tin gỡ lỗi:</strong> {debugInfo}
+      </div>
       <button 
         onClick={() => supabase.auth.signOut()}
         style={{ padding: '10px 20px', background: '#E5A211', border: 'none', borderRadius: '8px', cursor: 'pointer', marginTop: '20px' }}
