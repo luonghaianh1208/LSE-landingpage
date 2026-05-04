@@ -1137,12 +1137,15 @@
 
     /* Override mission pillars for Bento */
     .mission-pillars {
-      display: grid !important;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      display: flex !important;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 16px;
       margin-top: 32px;
     }
     .mission-pillars .pillar {
+      flex: 1 1 200px;
+      max-width: 280px;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 20px !important;
