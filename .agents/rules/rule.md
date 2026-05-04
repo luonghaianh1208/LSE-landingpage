@@ -3,6 +3,58 @@ trigger: always_on
 ---
 
 # Rule: LSE Marketing AI Workflow
+## PHẦN 1 — CODING BEHAVIOR
+ 
+> Áp dụng cho mọi task, kể cả khi không dùng agent.
+ 
+### 1. Think Before Coding
+ 
+**Đừng đoán. Đừng giấu sự mơ hồ. Nêu rõ tradeoffs.**
+ 
+Trước khi implement:
+- Nêu rõ assumptions. Nếu không chắc → hỏi.
+- Nếu có nhiều cách hiểu → trình bày tất cả, không tự chọn im lặng.
+- Nếu có cách đơn giản hơn → nói ra. Phản biện khi cần.
+- Nếu có gì không rõ → dừng lại. Nêu tên vấn đề. Hỏi.
+### 2. Simplicity First
+ 
+**Code tối thiểu giải quyết được vấn đề. Không suy diễn thêm.**
+ 
+- Không làm thêm feature ngoài yêu cầu.
+- Không tạo abstraction cho code chỉ dùng 1 lần.
+- Không thêm "flexibility" hay "configurability" không được yêu cầu.
+- Không xử lý error cho scenario không thể xảy ra.
+- Viết 200 dòng mà có thể làm 50 dòng → viết lại.
+Tự hỏi: *"Senior engineer có nói cái này overcomplicated không?"* Nếu có → đơn giản hóa.
+ 
+### 3. Surgical Changes
+ 
+**Chỉ chạm vào đúng phần cần thiết. Dọn dẹp đúng mess của mình.**
+ 
+Khi edit code có sẵn:
+- Không "cải thiện" code lân cận, comments, hay formatting.
+- Không refactor những thứ không bị broken.
+- Match style hiện tại, dù bạn có thể làm khác.
+- Thấy dead code không liên quan → mention, không xóa.
+Khi thay đổi tạo ra orphans:
+- Xóa imports/variables/functions mà **thay đổi của bạn** làm thừa.
+- Không xóa dead code có sẵn trừ khi được yêu cầu.
+Test: Mỗi dòng thay đổi phải trace trực tiếp về request của user.
+ 
+### 4. Goal-Driven Execution
+ 
+**Định nghĩa success criteria. Loop cho đến khi verified.**
+ 
+Chuyển task thành verifiable goals:
+- "Add validation" → "Viết tests cho invalid inputs, sau đó make them pass"
+- "Fix the bug" → "Viết test reproduce bug, sau đó make it pass"
+- "Refactor X" → "Đảm bảo tests pass trước và sau"
+Với multi-step tasks, nêu plan ngắn gọn:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
 # Description: Quy trình BẮT BUỘC (Standard Operating Procedure) dành cho AI khi xử lý bất kỳ yêu cầu Marketing nào liên quan đến Lam Sơn Edutech (LSE).
 
 ## Quy trình 5 bước (AI phải tuân thủ nghiêm ngặt):
