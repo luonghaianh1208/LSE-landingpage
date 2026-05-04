@@ -7,30 +7,46 @@ export default function ProtectedRoute() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    checkUser();
+    let mounted = true;
+
+    const checkRole = async (session) => {
+      if (!session) {
+        if (mounted) {
+          setIsAdmin(false);
+          setLoading(false);
+        }
+        return;
+      }
+
+      const { data } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', session.user.id)
+        .single();
+
+      if (mounted) {
+        setIsAdmin(data?.role === 'admin');
+        setLoading(false);
+      }
+    };
+
+    // Check current session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      checkRole(session);
+    });
+
+    // Listen for auth changes (like returning from Google OAuth)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      checkRole(session);
+    });
+
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
-  const checkUser = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) {
-      setLoading(false);
-      return;
-    }
-
-    // Check role in profiles table
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('role')
-      .eq('id', session.user.id)
-      .single();
-
-    if (data && data.role === 'admin') {
-      setIsAdmin(true);
-    }
-    setLoading(false);
-  };
-
-  if (loading) return <div style={{ padding: '40px', textAlign: 'center' }}>Đang tải...</div>;
+  if (loading) return <div style={{ padding: '40px', textAlign: 'center' }}>Đang xác thực quyền Admin...</div>;
   
   return isAdmin ? <Outlet /> : <Navigate to="/admin/login" />;
 }
