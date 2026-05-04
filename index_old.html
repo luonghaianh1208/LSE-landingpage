@@ -1,0 +1,2172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lam Sơn Edutech — Số hóa Giáo dục, Đồng hành Phát triển</title>
+  <meta name="description" content="Lam Sơn Edutech (LSE) — Công ty công nghệ giáo dục hàng đầu Việt Nam. Ứng dụng AI và chuyển đổi số vào dạy học, quản lý trường học và vận hành trung tâm đào tạo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1B2F5E;
+      --navy-dark: #0F1D3A;
+      --navy-light: #2A4A8C;
+      --gold: #E5A211;
+      --gold-light: #F0B42A;
+      --gold-pale: #FFF8EB;
+      --white: #ffffff;
+      --gray-50: #FAFBFE;
+      --gray-100: #F0F2F8;
+      --gray-200: #E2E6F0;
+      --gray-400: #94A3B8;
+      --gray-600: #5A6A80;
+      --gray-800: #2D3748;
+      --text: #1B2F5E;
+      --bento-bg: #F0F2F8;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow: 0 2px 16px rgba(27,47,94,0.08);
+      --shadow-lg: 0 8px 32px rgba(27,47,94,0.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── UTILITIES ─── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section-sm { padding: 64px 0; }
+    .text-center { text-align: center; }
+    .badge {
+      display: inline-block;
+      background: var(--gold-pale);
+      color: var(--gold);
+      border: 1px solid rgba(212,148,12,.2);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--gray-600);
+      max-width: 680px;
+      margin: 0 auto 48px;
+      text-wrap: balance;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all .22s ease;
+      font-family: 'Be Vietnam Pro', sans-serif;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy-dark);
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,148,12,.35); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.5);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.1); border-color: var(--white); }
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── NAVBAR ─── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0;
+      transition: all .3s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(15,29,58,.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 16px rgba(15,29,58,.2);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 20px;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: var(--gold);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: .2s;
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,.1); }
+    .nav-cta { margin-left: 8px; }
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: .3s;
+    }
+    @media(max-width:768px) {
+      .hamburger { display: flex; }
+      .nav-links, .nav-cta-desktop { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 68px; left: 0; right: 0;
+        background: var(--navy-dark);
+        padding: 20px 24px 28px;
+        gap: 4px;
+      }
+      .nav-links.open a { padding: 12px 16px; font-size: 16px; }
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-light) 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 100px 0 60px;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,148,12,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content { color: var(--white); }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,148,12,.15);
+      border: 1px solid rgba(212,148,12,.25);
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      letter-spacing: .04em;
+    }
+    .hero-title {
+      font-size: clamp(30px, 4.5vw, 48px);
+      font-weight: 900;
+      line-height: 1.18;
+      margin-bottom: 24px;
+    }
+    .hero-title span { color: var(--gold); }
+    .hero-desc {
+      font-size: 17px;
+      color: rgba(255,255,255,.75);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .hero-stat-item { text-align: left; }
+    .hero-stat-num { font-size: 28px; font-weight: 900; color: var(--gold); }
+    .hero-stat-label { font-size: 12px; color: rgba(255,255,255,.6); font-weight: 500; }
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-card-stack {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+    }
+    .hero-card {
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      color: var(--white);
+    }
+    .hero-card-main { z-index: 2; position: relative; }
+    .hero-card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .hero-card-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .hero-card-desc { font-size: 13px; color: rgba(255,255,255,.65); margin-bottom: 16px; }
+    .hero-product-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hero-product-chip {
+      background: rgba(212,148,12,.15);
+      border: 1px solid rgba(212,148,12,.2);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+    @keyframes float-anim {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0); }
+    }
+    .hero-float-card {
+      position: absolute;
+      right: -10px;
+      bottom: -20px;
+      background: var(--gold);
+      color: var(--navy-dark);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 1.4;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: normal;
+      max-width: 90%;
+      text-align: left;
+      animation: float-anim 4s ease-in-out infinite;
+      z-index: 10;
+    }
+    @media(max-width:900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { display: none; }
+      .hero-title { font-size: 34px; }
+    }
+
+    /* ─── MISSION ─── */
+    #mission {
+      background: var(--navy);
+      padding: 72px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #mission::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .mission-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .mission-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .mission-text {
+      font-size: clamp(22px, 3.5vw, 36px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.35;
+      max-width: 860px;
+      margin: 0 auto 28px;
+    }
+    .mission-text span { color: var(--gold); }
+    .mission-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,.65);
+      max-width: 640px;
+      margin: 0 auto 40px;
+    }
+    .mission-pillars {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .pillar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50px;
+      padding: 10px 20px;
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .pillar:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.14);
+    }
+    .pillar-icon { font-size: 18px; }
+
+    /* ─── STATS ─── */
+    #stats { background: var(--gray-50); }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .stat-card {
+      background: var(--white);
+      padding: 40px 32px;
+      text-align: center;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .stat-num {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-num span { color: var(--gold); }
+    .stat-label { font-size: 14px; color: var(--gray-600); font-weight: 500; }
+    @media(max-width:768px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:400px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-text .badge { color: var(--navy); background: var(--gray-100); border-color: var(--gray-200); }
+    .about-bullets { margin-top: 28px; }
+    .about-bullet {
+      display: flex;
+      gap: 14px;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+      margin-bottom: 12px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .about-bullet:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .about-bullet:last-child { margin-bottom: 0; }
+    .bullet-icon {
+      width: 44px; height: 44px;
+      min-width: 44px;
+      background: var(--navy);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .bullet-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .bullet-desc { font-size: 14px; color: var(--gray-600); }
+    .about-visual {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      color: var(--white);
+    }
+    .about-logo-large {
+      font-size: 40px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+    .about-logo-large span { color: var(--gold); }
+    .about-mission-quote {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: rgba(255,255,255,.9);
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+    }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .about-tag {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.8);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 50px;
+    }
+    .about-locations { margin-top: 28px; }
+    .loc-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 13px;
+      color: rgba(255,255,255,.65);
+    }
+    .loc-dot {
+      width: 8px; height: 8px; min-width: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-top: 6px;
+    }
+    @media(max-width:768px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── PRODUCTS ─── */
+    #products { background: var(--gray-50); }
+    .product-filter {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .filter-btn {
+      background: var(--white);
+      border: 2px solid var(--gray-200);
+      color: var(--gray-600);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 9px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: .2s;
+      font-family: 'Be Vietnam Pro', sans-serif;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: all .25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--gold));
+      opacity: 0;
+      transition: .25s;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--gray-200); }
+    .product-card:hover::before { opacity: 1; }
+    .product-card.featured {
+      background: linear-gradient(145deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: var(--white);
+      border: none;
+    }
+    .product-card.featured::before { opacity: 1; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+    .product-card.coming-soon { opacity: .85; }
+    .product-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+    .product-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .featured .product-icon { background: rgba(255,255,255,.15); }
+    .product-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .status-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .status-live { background: #dcfce7; color: #15803d; }
+    .status-building { background: #fef3c7; color: #b45309; }
+    .status-soon { background: var(--gray-100); color: var(--gray-600); }
+    .featured .status-live { background: rgba(21,128,61,.3); color: #86efac; }
+    .featured .status-building { background: rgba(180,83,9,.3); color: #fcd34d; }
+    .segment-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 50px;
+      background: var(--gray-100);
+      color: var(--gray-600);
+    }
+    .featured .segment-badge { background: rgba(255,255,255,.12); color: rgba(255,255,255,.7); }
+    .product-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .featured .product-name { color: var(--white); }
+    .product-desc {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .featured .product-desc { color: rgba(255,255,255,.7); }
+    .product-features {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+    .product-features li {
+      font-size: 13px;
+      color: var(--gray-600);
+      padding: 4px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .featured .product-features li { color: rgba(255,255,255,.7); }
+    .product-features li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .product-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      padding: 10px 0;
+      border-top: 1px solid var(--gray-100);
+      margin-top: auto;
+      transition: .2s;
+    }
+    .featured .product-cta { color: var(--gold); border-color: rgba(255,255,255,.12); }
+    .product-cta:hover { gap: 10px; }
+    .product-cta svg { transition: .2s; }
+    .product-card:hover .product-cta svg { transform: translateX(3px); }
+    @media(max-width:1024px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:600px) { .products-grid { grid-template-columns: 1fr; } }
+
+    /* ─── CUSTOMERS ─── */
+    #customers { background: var(--white); }
+    .customers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .customer-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      text-align: center;
+      transition: .25s;
+      cursor: default;
+    }
+    .customer-card:hover { border-color: var(--navy); transform: translateY(-3px); box-shadow: var(--shadow); }
+    .customer-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 16px;
+    }
+    .customer-name { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+    .customer-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; margin-bottom: 14px; }
+    .customer-needs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
+    .customer-need {
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--navy);
+      color: var(--white);
+      padding: 4px 10px;
+      border-radius: 50px;
+    }
+    @media(max-width:900px) { .customers-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:500px) { .customers-grid { grid-template-columns: 1fr; } }
+
+    /* ─── WHY LSE ─── */
+    #why { background: var(--gray-50); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .why-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      border: 1px solid var(--gray-200);
+      transition: .25s;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .why-num {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--gray-200);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .why-title { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+    .why-desc { font-size: 14px; color: var(--gray-600); line-height: 1.65; }
+    @media(max-width:768px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* ─── CONSULT FORM ─── */
+    #consult {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #consult::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,148,12,.1) 0%, transparent 70%);
+    }
+    .consult-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 60px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+    .consult-left { color: var(--white); }
+    .consult-left .badge { background: rgba(212,148,12,.15); color: var(--gold); border-color: rgba(212,148,12,.25); }
+    .consult-title { font-size: clamp(26px, 4vw, 38px); font-weight: 900; margin-bottom: 16px; }
+    .consult-desc { font-size: 16px; color: rgba(255,255,255,.7); margin-bottom: 36px; line-height: 1.7; }
+    .consult-benefits { list-style: none; }
+    .consult-benefits li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: 15px;
+      color: rgba(255,255,255,.85);
+    }
+    .consult-benefits li:last-child { border-bottom: none; }
+    .benefit-dot {
+      width: 32px; height: 32px; min-width: 32px;
+      background: rgba(212,148,12,.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .consult-contact {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: rgba(255,255,255,.7);
+    }
+    .contact-row strong { color: var(--white); }
+    /* Form */
+    .form-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-lg);
+    }
+    .form-title { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 6px;
+    }
+    .form-label .req { color: var(--gold); }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      transition: .2s;
+      outline: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,47,94,.1);
+    }
+    .form-input.error, .form-select.error { border-color: #ef4444; }
+    .form-error { font-size: 12px; color: #ef4444; margin-top: 4px; display: none; }
+    .form-error.show { display: block; }
+    .form-textarea { resize: vertical; min-height: 88px; }
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--gold);
+      color: var(--navy-dark);
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      transition: .22s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,148,12,.35); }
+    .form-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .form-note { font-size: 12px; color: var(--gray-400); text-align: center; margin-top: 12px; }
+    /* Success state */
+    #form-success {
+      display: none;
+      text-align: center;
+      padding: 32px 16px;
+    }
+    #form-success.show { display: block; }
+    .success-icon { font-size: 56px; margin-bottom: 16px; }
+    .success-title { font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+    .success-desc { font-size: 15px; color: var(--gray-600); }
+    @media(max-width:900px) {
+      .consult-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FOOTER ─── */
+    #footer { background: var(--navy-dark); color: rgba(255,255,255,.65); padding: 56px 0 32px; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand-name {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .footer-brand-name span { color: var(--gold); }
+    .footer-slogan { font-size: 13px; line-height: 1.6; margin-bottom: 20px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .social-btn {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,.08);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: .2s;
+    }
+    .social-btn:hover { background: var(--gold); color: var(--navy-dark); }
+    .footer-heading { font-size: 13px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.55); transition: .2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact li { margin-bottom: 10px; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
+    .footer-divider { height: 1px; background: rgba(255,255,255,.08); margin-bottom: 24px; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 12px; }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 12px; color: rgba(255,255,255,.45); }
+    .footer-legal a:hover { color: var(--gold); }
+    @media(max-width:768px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media(max-width:480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── CONFETTI ─── */
+    #confetti-wrap {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* ─── BACK TO TOP ─── */
+    #back-top {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 44px; height: 44px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 12px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: .2s;
+      z-index: 500;
+    }
+    #back-top.show { display: flex; }
+    #back-top:hover { background: var(--gold); color: var(--navy-dark); transform: translateY(-3px); }
+
+    /* Spinner */
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(27,47,94,.3);
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    /* ─── NEW CSS: HERO PRODUCT & TESTIMONIALS ─── */
+    .hero-product-banner {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      color: var(--white);
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(212,148,12,.25);
+    }
+    .hero-product-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(212,148,12,.08) 0%, transparent 60%);
+      animation: pulse-glow 8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes pulse-glow {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+    .hp-badge {
+      display: inline-flex;
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      box-shadow: 0 4px 12px rgba(212,148,12,.25);
+    }
+    .hp-title { font-size: 32px; font-weight: 900; margin-bottom: 16px; line-height: 1.2; color: var(--white); }
+    .hp-desc { font-size: 16px; color: rgba(255,255,255,.8); margin-bottom: 24px; line-height: 1.6; }
+    .hp-features { list-style: none; margin-bottom: 32px; padding: 0; }
+    .hp-features li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 15px; font-weight: 500; color: rgba(255,255,255,.9); }
+    .hp-features li::before { content: '🏆'; font-size: 16px; margin-top: 2px; }
+    .hp-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hp-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+    .hp-mockup { background: rgba(255,255,255,.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 24px; width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; }
+    .hp-mockup-icon { font-size: 72px; animation: float-anim 3s ease-in-out infinite; }
+    .hp-mockup-text { font-size: 18px; font-weight: 700; color: var(--gold); text-align: center; }
+    
+    @media(max-width:900px) {
+      .hero-product-banner { grid-template-columns: 1fr; padding: 32px 24px; }
+      .hp-visual { display: none; }
+    }
+
+    /* Testimonials Marquee */
+    #testimonials { background: var(--white); overflow: hidden; padding: 80px 0; }
+    .marquee-container { width: 100vw; max-width: 100%; position: relative; display: flex; overflow: hidden; padding: 20px 0; }
+    .marquee-track { display: flex; gap: 24px; width: max-content; animation: marquee 40s linear infinite; }
+    .marquee-container:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .testi-card { width: 340px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 4px 16px rgba(0,0,0,.03); transition: transform .3s ease; cursor: grab; white-space: normal; }
+    .testi-card:hover { transform: translateY(-5px); border-color: var(--navy-light); box-shadow: var(--shadow); }
+    .testi-quote { font-size: 14px; font-style: italic; color: var(--gray-600); line-height: 1.6; flex: 1; }
+    .testi-author { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--gray-200); padding-top: 16px; }
+    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--gold); font-weight: 700; }
+    .testi-info { display: flex; flex-direction: column; }
+    .testi-name { font-size: 14px; font-weight: 800; color: var(--navy); }
+    .testi-role { font-size: 12px; color: var(--gray-600); font-weight: 500; }
+    
+    .product-actions { display: flex; gap: 12px; margin-top: auto; padding-top: 20px; }
+    .product-actions .btn { padding: 10px 16px; font-size: 13px; flex: 1; justify-content: center; text-align: center; }
+  
+    /* ─── FEATURED ROBOT ─── */
+    .product-card.featured-robot {
+      background: linear-gradient(145deg, #1A1A2E 0%, #16213E 100%);
+      color: var(--white);
+      border: 1px solid #0F3460;
+      box-shadow: 0 8px 32px rgba(233, 69, 96, 0.2);
+    }
+    .featured-robot::before { opacity: 1; background: linear-gradient(90deg, #E94560, #FF6B6B); }
+    .featured-robot .product-icon { background: rgba(233, 69, 96, 0.2); color: #FF6B6B; }
+    .featured-robot .product-name { color: var(--white); }
+    .featured-robot .product-desc { color: rgba(255,255,255,.7); }
+    .featured-robot .product-features li { color: rgba(255,255,255,.7); }
+    .featured-robot .status-live { background: rgba(233, 69, 96, 0.2); color: #FF6B6B; }
+    .featured-robot .segment-badge { background: rgba(255,255,255,.12); color: rgba(255,255,255,.7); }
+    .featured-robot .product-actions .btn-outline[style*="background:var(--navy)"] { background: #E94560 !important; color: #fff !important; }
+    .featured-robot .product-actions .btn-outline[style*="border:1px solid var(--gray-200)"] { border-color: rgba(255,255,255,.3) !important; color: #fff !important; }
+
+  
+    .hero-title, .section-title, .mission-title { text-wrap: balance; }
+
+  
+    /* ─── REFINED ANIMATIONS ─── */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; left: -10%;
+      width: 50%; height: 70%;
+      background: radial-gradient(circle, rgba(212,148,12,0.15) 0%, rgba(212,148,12,0) 70%);
+      filter: blur(60px);
+      z-index: 0;
+      animation: floatBlob 10s ease-in-out infinite alternate;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%; right: -10%;
+      width: 60%; height: 60%;
+      background: radial-gradient(circle, rgba(36,61,120,0.4) 0%, rgba(36,61,120,0) 70%);
+      filter: blur(80px);
+      z-index: 0;
+      animation: floatBlob 15s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes floatBlob {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, 50px) scale(1.1); }
+    }
+    .hero-content, .hero-visual { position: relative; z-index: 1; }
+    
+    /* Refined Interactions */
+    .btn {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .btn:active { transform: scale(0.96); }
+
+    /* Override mission pillars */
+    .mission-pillars {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .mission-pillars .pillar {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+      font-size: 15px;
+    }
+    .mission-pillars .pillar:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.1);
+    }
+    
+    /* About refined */
+    .about-visual {
+      border-radius: var(--radius-lg);
+    }
+
+    /* Infinite Marquee Fix */
+    .marquee-container {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      width: 100%;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 24px;
+      width: max-content;
+      animation: marquee 25s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-container::before, .marquee-container::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-container::before {
+      left: 0;
+      background: linear-gradient(to right, var(--white), transparent);
+    }
+    .marquee-container::after {
+      right: 0;
+      background: linear-gradient(to left, var(--white), transparent);
+    }
+    .testi-card { min-width: 350px; }
+</style>
+</head>
+<body>
+
+<!-- Confetti container -->
+<div id="confetti-wrap"></div>
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="assets/logo.png" alt="Lam Sơn Edutech Logo" style="height: 48px;">
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">Về chúng tôi</a></li>
+      <li><a href="#products">Sản phẩm</a></li>
+      <li><a href="#customers">Khách hàng</a></li>
+      <li><a href="#consult">Liên hệ</a></li>
+    </ul>
+    <a href="#consult" class="btn btn-primary nav-cta nav-cta-desktop" style="padding:10px 22px;font-size:14px">
+      Tư vấn miễn phí
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <svg width="18" height="12" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" style="display:inline-block; vertical-align:middle; margin-right:4px; border-radius:2px;"><rect width="30" height="20" fill="#da251d"/><polygon points="15,4 11.47,14.85 20.71,8.15 9.29,8.15 18.53,14.85" fill="#ff0"/></svg> Công nghệ giáo dục Việt Nam
+        </div>
+        <h1 class="hero-title" style="text-wrap: balance;">
+          <span>Số hóa Giáo dục</span> đồng&nbsp;hành cùng Giáo&nbsp;viên & Trung&nbsp;tâm phát&nbsp;triển bền&nbsp;vững
+        </h1>
+        <p class="hero-desc">
+          Lam Sơn Edutech (LSE) cung cấp hệ sinh thái giải pháp AI và chuyển đổi số toàn diện
+          — từ phòng học đến phòng họp, từ giáo viên đến nhà quản lý.
+        </p>
+        <div class="hero-btns">
+          <a href="#consult" class="btn btn-primary" style="font-size:16px;padding:16px 32px">
+            Nhận tư vấn miễn phí →
+          </a>
+          <a href="#products" class="btn btn-secondary" style="font-size:16px;padding:16px 32px">
+            Khám phá sản phẩm
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">10+</div>
+            <div class="hero-stat-label">Sản phẩm<br>công nghệ</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">4</div>
+            <div class="hero-stat-label">Phân khúc<br>khách hàng</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">2</div>
+            <div class="hero-stat-label">Cơ sở<br>HN & HP</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">AI</div>
+            <div class="hero-stat-label">Tích hợp<br>mọi sản phẩm</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="hero-card hero-card-main">
+            <div class="hero-card-tag">🤖 Hệ sinh thái sản phẩm AI</div>
+            <div class="hero-card-title">Lam Sơn Edutech Platform</div>
+            <div class="hero-card-desc">10 giải pháp công nghệ — phủ sóng toàn bộ hành trình giáo dục Việt Nam</div>
+            <div class="hero-product-list">
+              <span class="hero-product-chip">🧑‍🏫 Trợ Lý GV</span>
+              <span class="hero-product-chip">🎓 Hệ thống mini LMS AI cá nhân hóa lộ trình học tập</span>
+              <span class="hero-product-chip">🏫 Nề Nếp AI</span>
+              <span class="hero-product-chip">🌍 IELTS AI</span>
+              <span class="hero-product-chip">🚀 Hướng Nghiệp</span>
+              <span class="hero-product-chip">🤖 Robot AI</span>
+              <span class="hero-product-chip">📋 Quản lý NV</span>
+              <span class="hero-product-chip">🏆 Khảo Thí</span>
+              <span class="hero-product-chip">⚡ Agent Kit</span>
+              <span class="hero-product-chip">🔧 Subagent</span>
+            </div>
+          </div>
+          <div class="hero-float-card">
+            ✅ Đã triển khai thực tế tại trường học & trung tâm
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MISSION ─── -->
+<section id="mission">
+  <div class="container">
+    <div class="mission-inner reveal">
+      <div class="mission-label">✦ Sứ mệnh của chúng tôi</div>
+      <h2 class="mission-text" style="text-wrap: balance;">
+        Biến <span>trí tuệ nhân tạo</span> thành người bạn đồng&nbsp;hành
+        của mỗi giáo viên, mỗi học sinh và mỗi tổ chức giáo dục Việt&nbsp;Nam
+      </h2>
+      <p class="mission-sub">
+        Chúng tôi không chỉ xây dựng phần mềm — chúng tôi kiến tạo nền tảng để giáo viên dạy tốt hơn,
+        học sinh học sâu hơn, và nhà trường vận hành thông minh hơn.
+      </p>
+      <div class="mission-pillars">
+        <div class="pillar"><span class="pillar-icon">🤖</span> AI tích hợp sâu</div>
+        <div class="pillar"><span class="pillar-icon"><svg width="18" height="12" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" style="display:inline-block; vertical-align:middle; border-radius:2px;"><rect width="30" height="20" fill="#da251d"/><polygon points="15,4 11.47,14.85 20.71,8.15 9.29,8.15 18.53,14.85" fill="#ff0"/></svg></span> Tối ưu cho Việt&nbsp;Nam</div>
+        <div class="pillar"><span class="pillar-icon">🚀</span> Triển khai nhanh</div>
+        <div class="pillar"><span class="pillar-icon">📊</span> Đo lường kết quả</div>
+        <div class="pillar"><span class="pillar-icon">💡</span> Đổi mới liên tục</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS ─── -->
+<section id="stats" class="section-sm">
+  <div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Sản phẩm công nghệ<br>đang vận hành</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span>100%</span></div>
+        <div class="stat-label">Tích hợp AI<br>vào sản phẩm</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4<span>+</span></div>
+        <div class="stat-label">Phân khúc khách hàng<br>được phục vụ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2<span>TP</span></div>
+        <div class="stat-label">Cơ sở hoạt động:<br>Hà Nội & Hải Phòng</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="badge">Về Lam Sơn Edutech</div>
+        <h2 class="section-title" style="text-align:left;margin-bottom:12px;text-wrap:balance;">
+          Thuộc Tập đoàn Lam Sơn — tiên phong Edtech Việt&nbsp;Nam
+        </h2>
+        <p style="font-size:16px;color:var(--gray-600);margin-bottom:24px;line-height:1.7">
+          Lam Sơn Edutech (LSE) là đơn vị chuyên biệt về công nghệ giáo dục của Tập đoàn Lam Sơn,
+          tập trung vào ba mảng cốt lõi: chuyển đổi số trong giáo dục, ứng dụng AI vào dạy – học,
+          và phát triển các giải pháp quản lý hiện đại cho nhà trường và trung tâm đào tạo.
+        </p>
+        <div class="about-bullets">
+          <div class="about-bullet">
+            <div class="bullet-icon">🎓</div>
+            <div>
+              <div class="bullet-title">Chuyên sâu giáo dục Việt Nam</div>
+              <div class="bullet-desc">Toàn bộ sản phẩm được thiết kế theo chương trình GDPT 2018 và đặc thù văn hóa giáo dục Việt Nam.</div>
+            </div>
+          </div>
+          <div class="about-bullet">
+            <div class="bullet-icon">🤖</div>
+            <div>
+              <div class="bullet-title">AI là lõi công nghệ</div>
+              <div class="bullet-desc">Mọi sản phẩm đều tích hợp trí tuệ nhân tạo — từ Gemini AI đến Local-first AI cho robot phần cứng.</div>
+            </div>
+          </div>
+          <div class="about-bullet">
+            <div class="bullet-icon">⚡</div>
+            <div>
+              <div class="bullet-title">Triển khai thực tế, không lý thuyết</div>
+              <div class="bullet-desc">Nhiều sản phẩm đã vận hành tại trường học và trung tâm — không chỉ trên paper.</div>
+            </div>
+          </div>
+          <div class="about-bullet">
+            <div class="bullet-icon">🌱</div>
+            <div>
+              <div class="bullet-title">Đồng hành dài hạn</div>
+              <div class="bullet-desc">LSE không chỉ bán phần mềm — chúng tôi đồng hành triển khai, đào tạo và hỗ trợ liên tục.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <img src="assets/logo.png" alt="Lam Sơn Edutech" style="height: 72px; margin-bottom: 20px; background: #fff; border-radius: 12px; padding: 10px 16px;">
+        <div class="about-mission-quote">
+          "Số hóa giáo dục, đồng hành cùng giáo viên & trung tâm phát triển bền vững"
+        </div>
+        <div class="about-tags">
+          <span class="about-tag">Edtech</span>
+          <span class="about-tag">AI in Education</span>
+          <span class="about-tag">Chuyển đổi số</span>
+          <span class="about-tag">PWA / Web App</span>
+          <span class="about-tag">GDPT 2018</span>
+          <span class="about-tag">Gemini AI</span>
+          <span class="about-tag">Local AI</span>
+          <span class="about-tag">B2B2C</span>
+        </div>
+        <div class="about-locations">
+          <div class="loc-item"><div class="loc-dot"></div><span><strong style="color:#fff">CS1:</strong> 870–872 Lê Thanh Nghị, Tân Hưng, TP Hải Phòng</span></div>
+          <div class="loc-item"><div class="loc-dot"></div><span><strong style="color:#fff">CS2:</strong> Ô 15–Đ13, KĐT Geleximco, Lê Trọng Tấn, Hoài Đức, Hà Nội</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUCTS ─── -->
+<section id="products" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="badge">Hệ sinh thái sản phẩm</div>
+      <h2 class="section-title">10 Giải pháp AI toàn diện</h2>
+      <p class="section-subtitle">
+        Từ phòng học đến phòng họp — LSE cung cấp đầy đủ công cụ để giáo viên, nhà trường,
+        trung tâm và lập trình viên làm việc thông minh hơn với AI.
+      </p>
+    </div>
+    <div class="product-filter reveal">
+      <button class="filter-btn active" data-filter="all">Tất cả (10)</button>
+      <button class="filter-btn" data-filter="giaovien">🧑‍🏫 Giáo viên</button>
+      <button class="filter-btn" data-filter="nhaTruong">🏫 Nhà trường</button>
+      <button class="filter-btn" data-filter="trungTam">📚 Trung tâm</button>
+      <button class="filter-btn" data-filter="developer">👨‍💻 Developer</button>
+    </div>
+    
+    <!-- SẢN PHẨM CHIẾN LƯỢC (HERO PRODUCT) -->
+    <div class="hero-product-banner reveal">
+      <div>
+        <div class="hp-badge">⭐ Sản phẩm chiến lược</div>
+        <h3 class="hp-title">Nền Tảng Quản Lý Khảo Thí & Đào Tạo Toàn Diện</h3>
+        <p class="hp-desc">
+          Hệ sinh thái số "All-in-one" kết nối thi trực tuyến, ôn luyện, học liệu và vận hành doanh thu cho trung tâm đào tạo. Kích hoạt gói tự động, hỗ trợ mạnh mẽ mô hình B2B2C.
+        </p>
+        <ul class="hp-features">
+          <li>Ngân hàng câu hỏi thông minh & tổ chức thi trực tuyến chống gian lận</li>
+          <li>Quản lý khóa học, phân phối học liệu số bảo mật</li>
+          <li>Tự động hóa hoàn toàn quy trình bán gói & kích hoạt dịch vụ</li>
+          <li>Dashboard quản lý đối tác đo lường doanh số & hoa hồng realtime</li>
+        </ul>
+        <div class="hp-actions">
+          <a href="#consult" class="btn btn-primary">Tư vấn ngay →</a>
+          <a href="#" class="btn btn-secondary" style="border-color:rgba(255,255,255,.3);color:#fff">Xem Demo Sản Phẩm</a>
+        </div>
+      </div>
+      <div class="hp-visual">
+        <div class="hp-mockup">
+          <div class="hp-mockup-icon">🏆</div>
+          <div class="hp-mockup-text">Hệ Sinh Thái Khảo Thí LSE<br><span style="font-size:14px; font-weight:400; color:#fff">Sẵn sàng vận hành 10,000+ học viên</span></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="products-grid" id="products-grid">
+
+
+      <!-- 1. Trợ Lý Giáo Viên -->
+      <div class="product-card reveal featured" data-cat="giaovien">
+        <div class="product-header">
+          <div class="product-icon">🧑‍🏫</div>
+          <div class="product-badges">
+            <span class="status-badge status-live">✅ Đang hoạt động</span>
+            <span class="segment-badge">Giáo viên THCS/THPT</span>
+          </div>
+        </div>
+        <div class="product-name">Trợ Lý Giáo Viên Toàn Năng</div>
+        <div class="product-desc">AI assistant hỗ trợ giáo viên soạn bài, xử lý tài liệu và sáng tạo nội dung dạy học — tất cả trong một giao diện đơn giản, chạy ngay trên trình duyệt.</div>
+        <ul class="product-features">
+          <li>Soạn giáo án tự động theo chuẩn CV 5512</li>
+          <li>OCR nhận dạng văn bản, công thức từ ảnh</li>
+          <li>Tạo ảnh minh họa bằng AI</li>
+          <li>Render công thức Toán–Hóa–Lý chuẩn LaTeX</li>
+          <li>PWA — cài như app, dùng mọi thiết bị</li>
+        </ul>
+        <div class="product-actions">
+          <a href="#consult" class="btn btn-primary" style="border:none;color:var(--navy-dark)">Tư vấn</a>
+          <a href="#" class="btn btn-outline" style="color:#fff;border:1px solid rgba(255,255,255,.3)">Demo</a>
+        </div>
+      </div>
+
+      <!-- 2. Hệ thống mini LMS AI cá nhân hóa lộ trình học tập -->
+      <div class="product-card reveal" data-cat="trungTam">
+        <div class="product-header">
+          <div class="product-icon">🎓</div>
+          <div class="product-badges">
+            <span class="status-badge status-live">✅ Đang hoạt động</span>
+            <span class="segment-badge">Trung tâm / Trường học</span>
+          </div>
+        </div>
+        <div class="product-name">Hệ thống mini LMS AI cá nhân hóa lộ trình học tập</div>
+        <div class="product-desc">Hệ thống quản lý học tập thế hệ mới, tích hợp Gemini AI vào toàn bộ vòng đời dạy – học – đánh giá. Tự động hóa chấm bài, lộ trình học cá nhân hóa.</div>
+        <ul class="product-features">
+          <li>Quản lý khóa học, lớp học, điểm danh tự động</li>
+          <li>Trợ lý AI đồng hành học tập 24/7</li>
+          <li>Chấm bài tự động, báo cáo chi tiết</li>
+          <li>Dashboard phân tích tiến độ học viên</li>
+        </ul>
+        <div class="product-actions">
+          <a href="#consult" class="btn btn-outline" style="background:var(--navy);color:#fff;border:none">Tư vấn</a>
+          <a href="#" class="btn btn-outline" style="border:1px solid var(--gray-200)">Demo</a>
+        </div>
+      </div>
+
+      <!-- 3. Phần mềm quản lí nền nếp học đường -->
+      <div class="product-card reveal" data-cat="nhaTruong">
+        <div class="product-header">
+          <div class="product-icon">🏫</div>
+          <div class="product-badges">
+            <span class="status-badge status-live">✅ Đang hoạt động</span>
+            <span class="segment-badge">Trường THPT</span>
+          </div>
+        </div>
+        <div class="product-name">Phần mềm quản lí nền nếp học đường</div>
+        <div class="product-desc">Ứng dụng quản lý nề nếp, kỷ luật và hành vi học sinh cho trường THPT — thay thế hoàn toàn sổ giấy và bảng tính Excel rời rạc.</div>
+        <ul class="product-features">
+          <li>Ghi nhận vi phạm, thành tích trong vài giây</li>
+          <li>Dashboard thống kê thời gian thực</li>
+          <li>AI phân tích, cảnh báo sớm học sinh yếu nề nếp</li>
+          <li>Báo cáo tuần/tháng/kỳ tự động</li>
+        </ul>
+        <div class="product-actions">
+          <a href="#consult" class="btn btn-outline" style="background:var(--navy);color:#fff;border:none">Tư vấn</a>
+          <a href="#" class="btn btn-outline" style="border:1px solid var(--gray-200)">Demo</a>
+        </div>
+      </div>
+
+      <!-- 4. IELTS Master AI -->
+      <div class="product-card reveal" data-cat="trungTam">
+        <div class="product-header">
+          <div class="product-icon">🌍</div>
+          <div class="product-badges">
+            <span class="status-badge status-live">✅ Đang hoạt động</span>
+            <span class="segment-badge">Trung tâm Ngoại ngữ</span>
+          </div>
+        </div>
+        <div class="product-name">IELTS Master AI</div>
+        <div class="product-desc">Nền tảng luyện thi IELTS toàn diện — AI chấm Writing theo 4 tiêu chí chuẩn IELTS, cá nhân hóa lộ trình học cho từng học viên, hoạt động 24/7.</div>
+        <ul class="product-features">
+          <li>AI chấm Writing chuẩn rubric TR/CC/LR/GRA</li>
+          <li>Luyện đủ 4 kỹ năng IELTS Listening/Reading/Writing/Speaking</li>
+          <li>Mô phỏng thi thật với đếm giờ</li>
+          <li>Lộ trình học cá nhân hóa theo điểm yếu</li>
+        </ul>
+        <div class="product-actions">
+          <a href="#consult" class="btn btn-outline" style="background:var(--navy);color:#fff;border:none">Tư vấn</a>
+          <a href="#" class="btn btn-outline" style="border:1px solid var(--gray-200)">Demo</a>
+        </div>
+      </div>
+
+      <!-- 5. Tư Vấn Hướng Nghiệp AI -->
+      <div class="product-card reveal" data-cat="nhaTruong">
+        <div class="product-header">
+          <div class="product-icon">🚀</div>
+          <div class="product-badges">
+            <span class="status-badge status-live">✅ Đang hoạt động</span>
+            <span class="segment-badge">Trường THPT</span>
+          </div>
+        </div>
+        <div class="product-name">Tư Vấn Hướng Nghiệp AI</div>
+        <div class="product-desc">Nền tảng định hướng sự nghiệp tích hợp 3 bài test chuẩn quốc tế (Holland RIASEC + MBTI + DISC) và phân tích AI chuyên sâu — bản tư vấn cá nhân hóa cho từng học sinh.</div>
+        <ul class="product-features">
+          <li>3 bài test tâm lý nghề nghiệp chuẩn quốc tế</li>
+          <li>AI tổng hợp → Top 3 nghề nghiệp phù hợp</li>
+          <li>Cảnh báo nghề bị AI thay thế trong 5–10 năm tới</li>
+          <li>Admin dashboard cho nhà trường</li>
+        </ul>
+        <div class="product-actions">
+          <a href="#consult" class="btn btn-outline" style="background:var(--navy);color:#fff;border:none">Tư vấn</a>
+          <a href="#" class="btn btn-outline" style="border:1px solid var(--gray-200)">Demo</a>
+        </div>
+      </div>
+
+      
+      <!-- 7. Robot Học Tập AI -->
+      <div class="product-card reveal featured-robot" data-cat="nhaTruong">
+        <div class="product-header">
+          <div class="product-icon">🤖</div>
+          <div class="product-badges">
+            <span class="status-badge status-building">🔬 Thử nghiệm</span>
+            <span class="segment-badge">Sản phẩm đặc biệt</span>
+          </div>
+        </div>
+        <div class="product-name">Robot Học Tập AI</div>
+        <div class="product-desc">Sản phẩm phần cứng giáo dục in 3D — robot tương tác thông minh ứng dụng cơ chế "Learning-by-Teaching", xử lý AI ngay trên thiết bị (NVIDIA Jetson Nano). Nhận dạng tiếng Việt, biểu cảm sinh động.</div>
+        <ul class="product-features">
+          <li>Local-first AI — không phụ thuộc internet</li>
+          <li>Nhận dạng giọng nói tiếng Việt thời gian thực</li>
+          <li>Bayesian Knowledge Tracing — cá nhân hóa học tập</li>
+          <li>Cơ chế "học bằng cách dạy lại" độc đáo</li>
+        </ul>
+        <div class="product-actions">
+          <a href="#consult" class="btn btn-outline" style="background:var(--navy);color:#fff;border:none">Tư vấn</a>
+          <a href="#" class="btn btn-outline" style="border:1px solid var(--gray-200)">Demo</a>
+        </div>
+      </div>
+
+      <!-- 8. Quản Lý Công Việc Nội Bộ -->
+      <div class="product-card reveal" data-cat="nhaTruong">
+        <div class="product-header">
+          <div class="product-icon">📋</div>
+          <div class="product-badges">
+            <span class="status-badge status-live">✅ Đang hoạt động</span>
+            <span class="segment-badge">Tổ chức / Đoàn thể</span>
+          </div>
+        </div>
+        <div class="product-name">Quản Lý Công Việc Nội Bộ</div>
+        <div class="product-desc">Ứng dụng task management realtime cho nhóm 5–30 người: tổ chức, đoàn thể, ban nhóm nội bộ. Nhắc deadline qua email tự động, xuất báo cáo Excel/PDF.</div>
+        <ul class="product-features">
+          <li>Realtime — mọi thay đổi cập nhật tức thì</li>
+          <li>Phân quyền 3 cấp: Admin / Manager / Member</li>
+          <li>Nhắc deadline tự động qua email</li>
+          <li>Xuất báo cáo Excel + PDF</li>
+        </ul>
+        <div class="product-actions">
+          <a href="#consult" class="btn btn-outline" style="background:var(--navy);color:#fff;border:none">Tư vấn</a>
+          <a href="#" class="btn btn-outline" style="border:1px solid var(--gray-200)">Demo</a>
+        </div>
+      </div>
+
+      <!-- 9. Agent Kit -->
+      <div class="product-card reveal" data-cat="developer">
+        <div class="product-header">
+          <div class="product-icon">⚡</div>
+          <div class="product-badges">
+            <span class="status-badge status-live">✅ Open Source</span>
+            <span class="segment-badge">Developer</span>
+          </div>
+        </div>
+        <div class="product-name">Agent Kit AI</div>
+        <div class="product-desc">Bộ toolkit mở rộng năng lực AI Agent: 20 agent chuyên biệt, 39 skill module, 11 workflow tự động — plug & play vào bất kỳ dự án nào trong 3 bước.</div>
+        <ul class="product-features">
+          <li>20 AI Agent chuyên biệt (Frontend, Backend, Security...)</li>
+          <li>39 Skill Module bao phủ toàn bộ SDLC</li>
+          <li>11 Workflow tự động (slash commands)</li>
+          <li>Tương thích Claude Code, Gemini</li>
+        </ul>
+        <div class="product-actions">
+          <a href="#consult" class="btn btn-outline" style="background:var(--navy);color:#fff;border:none">Tư vấn</a>
+          <a href="#" class="btn btn-outline" style="border:1px solid var(--gray-200)">Demo</a>
+        </div>
+      </div>
+
+      <!-- 10. Subagent Workflow -->
+      <div class="product-card reveal" data-cat="developer">
+        <div class="product-header">
+          <div class="product-icon">🔧</div>
+          <div class="product-badges">
+            <span class="status-badge status-live">✅ Đang hoạt động</span>
+            <span class="segment-badge">Dev Team</span>
+          </div>
+        </div>
+        <div class="product-name">Subagent Workflow</div>
+        <div class="product-desc">Hệ thống 11 AI Agent tự động hóa toàn bộ quy trình phát triển phần mềm: từ thiết kế UI đến security audit, viết test và commit code — phân tách trách nhiệm rõ ràng.</div>
+        <ul class="product-features">
+          <li>11 Agent chuyên biệt theo 5 phase phát triển</li>
+          <li>Security audit mặc định trước mỗi thay đổi</li>
+          <li>Viết unit test & documentation tự động</li>
+          <li>Nói chuyện với agent bằng tiếng Việt</li>
+        </ul>
+        <div class="product-actions">
+          <a href="#consult" class="btn btn-outline" style="background:var(--navy);color:#fff;border:none">Tư vấn</a>
+          <a href="#" class="btn btn-outline" style="border:1px solid var(--gray-200)">Demo</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CUSTOMERS ─── -->
+<section id="customers" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="badge">Khách hàng mục tiêu</div>
+      <h2 class="section-title">Phục vụ ai?</h2>
+      <p class="section-subtitle">LSE có giải pháp phù hợp cho mọi đối tượng trong hệ sinh thái giáo dục Việt Nam.</p>
+    </div>
+    <div class="customers-grid reveal">
+      <div class="customer-card">
+        <div class="customer-icon">🧑‍🏫</div>
+        <div class="customer-name">Giáo viên / Giảng viên</div>
+        <div class="customer-desc">Đang đứng lớp, bận rộn, muốn nâng cao năng lực và tiết kiệm thời gian chuẩn bị bài.</div>
+        <div class="customer-needs">
+          <span class="customer-need">Soạn bài nhanh</span>
+          <span class="customer-need">Ứng dụng AI</span>
+          <span class="customer-need">Tiết kiệm thời gian</span>
+        </div>
+      </div>
+      <div class="customer-card">
+        <div class="customer-icon">🏫</div>
+        <div class="customer-name">Nhà trường / Sở GD</div>
+        <div class="customer-desc">Lãnh đạo, ban giám hiệu cần giải pháp tổng thể, tuân thủ chính sách Bộ GD&ĐT, ROI rõ ràng.</div>
+        <div class="customer-needs">
+          <span class="customer-need">Giải pháp tổng thể</span>
+          <span class="customer-need">Báo cáo</span>
+          <span class="customer-need">Chính sách BộGD</span>
+        </div>
+      </div>
+      <div class="customer-card">
+        <div class="customer-icon">📚</div>
+        <div class="customer-name">Trung tâm / Edtech</div>
+        <div class="customer-desc">Chủ trung tâm, startup giáo dục cần tăng doanh thu, tối ưu vận hành và marketing hiệu quả.</div>
+        <div class="customer-needs">
+          <span class="customer-need">Tăng doanh thu</span>
+          <span class="customer-need">Tối ưu vận hành</span>
+          <span class="customer-need">Marketing</span>
+        </div>
+      </div>
+      <div class="customer-card">
+        <div class="customer-icon">🏢</div>
+        <div class="customer-name">Doanh nghiệp <span style="font-size:11px;font-weight:500;color:#888">(sắp ra mắt)</span></div>
+        <div class="customer-desc">HR, L&D, CEO SME cần đào tạo nhân sự hiệu quả và chuyển đổi số quy trình nội bộ.</div>
+        <div class="customer-needs">
+          <span class="customer-need">Đào tạo nhân sự</span>
+          <span class="customer-need">Chuyển đổi số</span>
+          <span class="customer-need">Quy trình nội bộ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── TESTIMONIALS ─── -->
+<section id="testimonials" class="section">
+  <div class="text-center reveal">
+    <div class="badge">Phản hồi khách hàng</div>
+    <h2 class="section-title">Niềm tin từ hệ sinh thái giáo dục</h2>
+    <p class="section-subtitle">Hàng ngàn giáo viên, học sinh và nhà quản lý đã trải nghiệm sự khác biệt mà công nghệ AI của Lam Sơn Edutech mang lại.</p>
+  </div>
+  <div class="marquee-container reveal">
+    <div class="marquee-track">
+      <div class="testi-card">
+        <div class="testi-quote">"Từ khi dùng Trợ Lý Giáo Viên Toàn Năng, tôi không còn thức đêm soạn giáo án. AI xử lý cấu trúc bài giảng quá thông minh, chuẩn xác."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👩‍🏫</div>
+          <div class="testi-info"><span class="testi-name">Cô Nguyễn H. Phương</span><span class="testi-role">Giáo viên Toán cấp 3</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Tôi rất bất ngờ với Phần mềm quản lí nền nếp học đường. Báo cáo tự động mỗi tuần giúp Ban Giám Hiệu nắm bắt tình hình tức thì, không phải chờ giáo viên nộp sổ."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👨‍💼</div>
+          <div class="testi-info"><span class="testi-name">Thầy Phạm V. Tuấn</span><span class="testi-role">Hiệu phó trường THPT</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Hệ thống Khảo thí và Hệ thống mini LMS AI cá nhân hóa lộ trình học tập giúp trung tâm mình tự động hóa khâu chấm bài IELTS. Doanh thu tăng 30% vì giáo viên nhận được nhiều lớp hơn."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">🏢</div>
+          <div class="testi-info"><span class="testi-name">Anh Lê T. Phong</span><span class="testi-role">Giám đốc Trung tâm Anh Ngữ</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Robot Học Tập AI thực sự là người bạn tuyệt vời của con trai mình. Bé tự tin giao tiếp, hay đặt câu hỏi hơn và không còn lười học từ vựng nữa."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👨‍👩‍👦</div>
+          <div class="testi-info"><span class="testi-name">Chị Trần M. Lan</span><span class="testi-role">Phụ huynh học sinh Tiểu học</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Bài test hướng nghiệp AI siêu chuẩn! Nó không chỉ chỉ ra nghề hợp với em mà còn cảnh báo những ngành dễ bị AI thay thế để em chọn trường đúng đắn hơn."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">🎓</div>
+          <div class="testi-info"><span class="testi-name">Bạn Hoàng D. Anh</span><span class="testi-role">Học sinh lớp 12</span></div>
+        </div>
+      </div>
+      
+      <!-- Duplicate for infinite scrolling -->
+      <div class="testi-card">
+        <div class="testi-quote">"Từ khi dùng Trợ Lý Giáo Viên Toàn Năng, tôi không còn thức đêm soạn giáo án. AI xử lý cấu trúc bài giảng quá thông minh, chuẩn xác."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👩‍🏫</div>
+          <div class="testi-info"><span class="testi-name">Cô Nguyễn H. Phương</span><span class="testi-role">Giáo viên Toán cấp 3</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Tôi rất bất ngờ với Phần mềm quản lí nền nếp học đường. Báo cáo tự động mỗi tuần giúp Ban Giám Hiệu nắm bắt tình hình tức thì, không phải chờ giáo viên nộp sổ."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👨‍💼</div>
+          <div class="testi-info"><span class="testi-name">Thầy Phạm V. Tuấn</span><span class="testi-role">Hiệu phó trường THPT</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Hệ thống Khảo thí và Hệ thống mini LMS AI cá nhân hóa lộ trình học tập giúp trung tâm mình tự động hóa khâu chấm bài IELTS. Doanh thu tăng 30% vì giáo viên nhận được nhiều lớp hơn."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">🏢</div>
+          <div class="testi-info"><span class="testi-name">Anh Lê T. Phong</span><span class="testi-role">Giám đốc Trung tâm Anh Ngữ</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Robot Học Tập AI thực sự là người bạn tuyệt vời của con trai mình. Bé tự tin giao tiếp, hay đặt câu hỏi hơn và không còn lười học từ vựng nữa."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">👨‍👩‍👦</div>
+          <div class="testi-info"><span class="testi-name">Chị Trần M. Lan</span><span class="testi-role">Phụ huynh học sinh Tiểu học</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"Bài test hướng nghiệp AI siêu chuẩn! Nó không chỉ chỉ ra nghề hợp với em mà còn cảnh báo những ngành dễ bị AI thay thế để em chọn trường đúng đắn hơn."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">🎓</div>
+          <div class="testi-info"><span class="testi-name">Bạn Hoàng D. Anh</span><span class="testi-role">Học sinh lớp 12</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY LSE ─── -->
+<section id="why" class="section">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="badge">Tại sao chọn LSE?</div>
+      <h2 class="section-title">Khác biệt cốt lõi</h2>
+      <p class="section-subtitle">Không phải phần mềm đơn thuần — LSE là đối tác chuyển đổi số giáo dục dài hạn của bạn.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-num">01</div>
+        <div class="why-title">AI tích hợp thực sự, không chỉ là tên gọi</div>
+        <div class="why-desc">Toàn bộ 10 sản phẩm của LSE đều tích hợp AI vào nghiệp vụ cốt lõi — không phải chỉ là chatbot hay "tính năng thêm". AI là lõi vận hành của từng giải pháp.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">02</div>
+        <div class="why-title">Thiết kế riêng cho giáo dục Việt Nam</div>
+        <div class="why-desc">Từ chuẩn CV 5512, chương trình GDPT 2018 đến đặc thù văn hóa lớp học — mọi chi tiết đều được tối ưu cho ngữ cảnh Việt Nam, không phải bản dịch từ nước ngoài.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">03</div>
+        <div class="why-title">Đã thực chiến tại trường học & trung tâm</div>
+        <div class="why-desc">Không chỉ là demo — các sản phẩm của LSE đã và đang vận hành thực tế tại nhiều trường THPT và trung tâm đào tạo, được kiểm chứng bởi người dùng thực.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">04</div>
+        <div class="why-title">Hệ sinh thái đồng bộ, không rời rạc</div>
+        <div class="why-desc">Các sản phẩm LSE được thiết kế để hoạt động cùng nhau trong một hệ sinh thái — giáo viên, nhà trường, trung tâm có thể triển khai nhiều giải pháp tích hợp liền mạch.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">05</div>
+        <div class="why-title">Triển khai nhanh, không cần hạ tầng phức tạp</div>
+        <div class="why-desc">Tất cả sản phẩm chạy trên nền web, PWA hoặc cloud — không yêu cầu server riêng hay đội IT phức tạp. Đơn vị nhỏ vẫn dùng được ngay sau vài giờ thiết lập.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">06</div>
+        <div class="why-title">Đội ngũ đồng hành, không bán xong bỏ</div>
+        <div class="why-desc">LSE cam kết đồng hành từ tư vấn, triển khai, đào tạo đến hỗ trợ vận hành liên tục. Mục tiêu của chúng tôi là đơn vị của bạn thực sự hưởng lợi từ công nghệ.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONSULT FORM ─── -->
+<section id="consult">
+  <div class="container">
+    <div class="consult-grid">
+      <div class="consult-left reveal">
+        <div class="badge">Tư vấn miễn phí</div>
+        <h2 class="consult-title">Sẵn sàng chuyển đổi số cùng LSE?</h2>
+        <p class="consult-desc">
+          Để lại thông tin — đội ngũ chuyên gia của LSE sẽ liên hệ trong vòng
+          <strong style="color:var(--gold)">24 giờ</strong> để tư vấn giải pháp
+          phù hợp nhất với đơn vị của bạn.
+        </p>
+        <ul class="consult-benefits">
+          <li><div class="benefit-dot">🎯</div> Tư vấn nhu cầu chuyển đổi số cụ thể</li>
+          <li><div class="benefit-dot">🔍</div> Demo trực tiếp sản phẩm phù hợp</li>
+          <li><div class="benefit-dot">💰</div> Báo giá minh bạch, không ẩn phí</li>
+          <li><div class="benefit-dot">🤝</div> Lộ trình triển khai chi tiết</li>
+          <li><div class="benefit-dot">🆓</div> Hoàn toàn miễn phí, không ràng buộc</li>
+        </ul>
+        <div class="consult-contact">
+          <div class="contact-row">📞 <strong>Hotline:</strong> &nbsp;<a href="tel:0936171111" style="color:var(--gold);font-weight:700">0936.171.111</a></div>
+          <div class="contact-row">✉️ <strong>Email:</strong> &nbsp;<a href="mailto:edutech.lamson@gmail.com" style="color:var(--gold);font-weight:700">edutech.lamson@gmail.com</a></div>
+          <div class="contact-row">🌐 <strong>Website:</strong> &nbsp;<a href="https://lamsonedutech.vn" target="_blank" style="color:var(--gold);font-weight:700">lamsonedutech.vn</a></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="form-card">
+          <div id="form-main">
+            <div class="form-title">📋 Đăng ký nhận tư vấn</div>
+            <form id="consult-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="f-name">Họ và tên <span class="req">*</span></label>
+                  <input class="form-input" id="f-name" type="text" placeholder="Nguyễn Văn A" />
+                  <div class="form-error" id="err-name">Vui lòng nhập họ tên</div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="f-phone">Số điện thoại <span class="req">*</span></label>
+                  <input class="form-input" id="f-phone" type="tel" placeholder="0912 345 678" />
+                  <div class="form-error" id="err-phone">SĐT không hợp lệ (phải bắt đầu 03/05/07/08/09)</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-email">Email <span class="req">*</span></label>
+                <input class="form-input" id="f-email" type="email" placeholder="email@truong.edu.vn" />
+                <div class="form-error" id="err-email">Email không hợp lệ</div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="f-unit">Đơn vị / Tổ chức</label>
+                  <input class="form-input" id="f-unit" type="text" placeholder="Trường THPT / Trung tâm..." />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="f-segment">Bạn là <span class="req">*</span></label>
+                  <select class="form-select" id="f-segment">
+                    <option value="">-- Chọn đối tượng --</option>
+                    <option>Giáo viên / Giảng viên</option>
+                    <option>Ban giám hiệu / Quản lý trường</option>
+                    <option>Chủ trung tâm / Giám đốc Edtech</option>
+                    <option>Lập trình viên / Developer</option>
+                    <option>Doanh nghiệp (HR / L&D)</option>
+                    <option>Khác</option>
+                  </select>
+                  <div class="form-error" id="err-segment">Vui lòng chọn đối tượng</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-product">Sản phẩm quan tâm</label>
+                <select class="form-select" id="f-product">
+                  <option value="">-- Chọn sản phẩm (có thể bỏ qua) --</option>
+                  <option>Trợ Lý Giáo Viên Toàn Năng</option>
+                  <option>Hệ thống mini LMS AI cá nhân hóa lộ trình học tập</option>
+                  <option>Phần mềm quản lí nền nếp học đường</option>
+                  <option>IELTS Master AI</option>
+                  <option>Tư Vấn Hướng Nghiệp AI</option>
+                  <option>Nền Tảng Quản Lý Khảo Thí</option>
+                  <option>Robot Học Tập AI</option>
+                  <option>Quản Lý Công Việc Nội Bộ</option>
+                  <option>Agent Kit / Subagent Workflow</option>
+                  <option>Tư vấn tổng thể chuyển đổi số</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-note">Nội dung cần tư vấn</label>
+                <textarea class="form-textarea" id="f-note" placeholder="Mô tả ngắn về nhu cầu hoặc câu hỏi của bạn..."></textarea>
+              </div>
+              <button type="submit" class="form-submit" id="submit-btn">
+                <span id="submit-text">Gửi đăng ký tư vấn →</span>
+                <div class="spinner" id="submit-spinner" style="display:none"></div>
+              </button>
+              <p class="form-note">🔒 Thông tin của bạn được bảo mật tuyệt đối. LSE cam kết không chia sẻ với bên thứ ba.</p>
+            </form>
+          </div>
+          <div id="form-success">
+            <div class="success-icon">🎉</div>
+            <div class="success-title">Đăng ký thành công!</div>
+            <div class="success-desc">
+              Cảm ơn bạn đã quan tâm đến <strong>Lam Sơn Edutech</strong>.<br />
+              Chuyên gia tư vấn sẽ liên hệ với bạn trong vòng <strong>24 giờ</strong>.<br /><br />
+              Trong thời gian chờ, bạn có thể liên hệ trực tiếp qua:<br />
+              📞 <a href="tel:0936171111" style="color:var(--gold);font-weight:700">0936.171.111</a> &nbsp;|&nbsp;
+              ✉️ <a href="mailto:edutech.lamson@gmail.com" style="color:var(--gold);font-weight:700">edutech.lamson@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/logo.png" alt="Lam Sơn Edutech" style="height: 44px; background: #fff; border-radius: 8px; padding: 6px 12px; margin-bottom: 8px;">
+        <div class="footer-slogan">Số hóa giáo dục, đồng hành cùng giáo viên & trung tâm phát triển bền vững.<br />Thuộc Tập đoàn Lam Sơn.</div>
+        <div class="footer-socials">
+          <a href="https://facebook.com" target="_blank" class="social-btn" title="Facebook">📘</a>
+          <a href="https://zalo.me" target="_blank" class="social-btn" title="Zalo">💬</a>
+          <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn">💼</a>
+          <a href="https://lamsonedutech.vn" target="_blank" class="social-btn" title="Website">🌐</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Sản phẩm</div>
+        <ul class="footer-links">
+          <li><a href="#products">Trợ Lý Giáo Viên</a></li>
+          <li><a href="#products">Hệ thống mini LMS AI cá nhân hóa lộ trình học tập</a></li>
+          <li><a href="#products">Phần mềm quản lí nền nếp học đường</a></li>
+          <li><a href="#products">IELTS Master AI</a></li>
+          <li><a href="#products">Tư Vấn Hướng Nghiệp AI</a></li>
+          <li><a href="#products">Nền Tảng Khảo Thí</a></li>
+          <li><a href="#products">Robot Học Tập AI</a></li>
+          <li><a href="#products">Agent Kit & Subagent</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Khách hàng</div>
+        <ul class="footer-links">
+          <li><a href="#customers">Giáo viên</a></li>
+          <li><a href="#customers">Nhà trường / Sở GD</a></li>
+          <li><a href="#customers">Trung tâm đào tạo</a></li>
+          <li><a href="#customers">Doanh nghiệp</a></li>
+          <li><a href="#customers">Lập trình viên</a></li>
+        </ul>
+        <div class="footer-heading" style="margin-top:24px">Công ty</div>
+        <ul class="footer-links">
+          <li><a href="#about">Về chúng tôi</a></li>
+          <li><a href="#why">Tại sao chọn LSE</a></li>
+          <li><a href="#consult">Liên hệ tư vấn</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Liên hệ</div>
+        <ul class="footer-contact footer-links">
+          <li>📞 <a href="tel:0936171111">0936.171.111</a></li>
+          <li>✉️ <a href="mailto:edutech.lamson@gmail.com">edutech.lamson@gmail.com</a></li>
+          <li>🌐 <a href="https://lamsonedutech.vn" target="_blank">lamsonedutech.vn</a></li>
+          <li>📍 870–872 Lê Thanh Nghị, Tân Hưng, TP Hải Phòng</li>
+          <li>📍 Ô 15–Đ13, KĐT Geleximco, Hoài Đức, Hà Nội</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Lam Sơn Edutech. Thuộc Tập đoàn Lam Sơn. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Chính sách bảo mật</a>
+        <a href="#">Điều khoản sử dụng</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<div id="back-top" title="Lên đầu trang">↑</div>
+
+<script>
+  // ─── NAVBAR scroll ───
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    document.getElementById('back-top').classList.toggle('show', window.scrollY > 400);
+  });
+  document.getElementById('back-top').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ─── HAMBURGER ───
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // ─── REVEAL on scroll ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ─── PRODUCT FILTER ───
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.product-card').forEach(card => {
+        const show = filter === 'all' || card.dataset.cat === filter;
+        card.style.display = show ? 'flex' : 'none';
+      });
+    });
+  });
+
+  // ─── VALIDATION ───
+  function isPhone(v) { return /^(0[3|5|7|8|9])\d{8}$/.test(v.replace(/\s/g,'')); }
+  function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function setError(id, errId, show) {
+    const input = document.getElementById(id);
+    const err = document.getElementById(errId);
+    if (show) { input.classList.add('error'); err.classList.add('show'); }
+    else { input.classList.remove('error'); err.classList.remove('show'); }
+    return !show;
+  }
+
+  // ─── CONFETTI ───
+  function launchConfetti() {
+    const wrap = document.getElementById('confetti-wrap');
+    const colors = ['#D4940C','#E8A817','#1B2F5E','#ffffff','#2A4A8C','#FFF8EB'];
+    for (let i = 0; i < 120; i++) {
+      const el = document.createElement('div');
+      const size = Math.random() * 9 + 5;
+      el.style.cssText = `position:absolute;top:-20px;left:${Math.random()*100}%;
+        width:${size}px;height:${size}px;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        border-radius:${Math.random()>.5?'50%':'2px'};
+        animation:fall ${Math.random()*2.5+2}s ${Math.random()*1.5}s ease-in forwards;`;
+      wrap.appendChild(el);
+    }
+    setTimeout(() => wrap.innerHTML = '', 6000);
+  }
+
+  // ─── FORM SUBMIT ───
+  document.getElementById('consult-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const segment = document.getElementById('f-segment').value;
+
+    let valid = true;
+    valid = setError('f-name', 'err-name', !name) && valid;
+    valid = setError('f-phone', 'err-phone', !isPhone(phone)) && valid;
+    valid = setError('f-email', 'err-email', !isEmail(email)) && valid;
+    valid = setError('f-segment', 'err-segment', !segment) && valid;
+    if (!valid) return;
+
+    const btn = document.getElementById('submit-btn');
+    const txt = document.getElementById('submit-text');
+    const spin = document.getElementById('submit-spinner');
+    btn.disabled = true; txt.textContent = 'Đang gửi...'; spin.style.display = 'block';
+
+    const payload = {
+      full_name: name,
+      phone,
+      email,
+      unit: document.getElementById('f-unit').value.trim(),
+      segment,
+      product_interest: document.getElementById('f-product').value,
+      note: document.getElementById('f-note').value.trim(),
+      submitted_at: new Date().toISOString(),
+      source: 'landing-page-lse'
+    };
+
+    // ────────────────────────────────────────────────────────────────
+    // SUPABASE INTEGRATION
+    // Để kết nối Supabase, thay YOUR_SUPABASE_URL và YOUR_SUPABASE_KEY
+    // bằng thông tin project của bạn tại supabase.com → Settings → API
+    // SQL tạo bảng:
+    //   CREATE TABLE leads (
+    //     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+    //     full_name text, phone text, email text,
+    //     unit text, segment text, product_interest text,
+    //     note text, submitted_at timestamptz, source text
+    //   );
+    //   ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
+    //   CREATE POLICY "anon insert" ON leads FOR INSERT TO anon WITH CHECK (true);
+    // ────────────────────────────────────────────────────────────────
+    const SUPABASE_URL = 'https://zsqibemyfuhlgjkxwzjc.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_w2_4GtSZH3mtXJmblXJMWQ_tDeKRnHo';
+
+    try {
+      if (SUPABASE_URL !== 'YOUR_SUPABASE_URL') {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+          const errData = await res.json();
+          throw new Error(errData.message || 'Supabase error');
+        }
+      } else {
+        // Demo mode: simulate delay
+        await new Promise(r => setTimeout(r, 1200));
+        console.log('Form data (demo mode):', payload);
+      }
+      document.getElementById('form-main').style.display = 'none';
+      document.getElementById('form-success').classList.add('show');
+      launchConfetti();
+    } catch (err) {
+      console.error(err);
+      alert('Có lỗi từ Database: ' + err.message + '. Vui lòng kiểm tra lại cấu hình Supabase hoặc tạo bảng leads.');
+      btn.disabled = false; txt.textContent = 'Gửi đăng ký tư vấn →'; spin.style.display = 'none';
+    }
+  });
+
+  // ─── Clear error on input ───
+  ['f-name','f-phone','f-email','f-segment'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      document.getElementById(id).classList.remove('error');
+    });
+  });
+</script>
+</body>
+</html>
