@@ -70,7 +70,7 @@ export default function AdminProducts() {
         { order_index: 3, name: 'Phần mềm quản lí nền nếp học đường', description: 'Giải pháp báo cáo tự động giúp Ban giám hiệu và giáo viên quản lý nền nếp học sinh.', segment: 'Nhà trường', status: 'live' },
         { order_index: 4, name: 'IELTS Master AI', description: 'Tự động hóa khâu chấm bài IELTS, tăng năng suất giáo viên trung tâm.', segment: 'Trung tâm', status: 'live' },
         { order_index: 5, name: 'Tư Vấn Hướng Nghiệp AI', description: 'Phân tích điểm mạnh điểm yếu học sinh, đưa ra lộ trình nghề nghiệp chuẩn xác.', segment: 'Nhà trường', status: 'live' },
-        { order_index: 6, name: 'Nền Tảng Quản Lý Khảo Thí', description: 'Ngân hàng câu hỏi thông minh & tổ chức thi trực tuyến chống gian lận.', segment: 'Trung tâm', status: 'live' },
+        { order_index: 6, name: 'Nền Tảng Quản Lý Khảo Thí & Đào Tạo', description: 'Hệ sinh thái số "All-in-one" kết nối thi trực tuyến, ôn luyện, học liệu và vận hành doanh thu cho trung tâm đào tạo.', segment: 'Sản phẩm chiến lược', status: 'live' },
         { order_index: 7, name: 'Robot Học Tập AI', description: 'Robot thông minh giao tiếp tiếng Anh, hỗ trợ tự học cho học sinh.', segment: 'Sản phẩm đặc biệt', status: 'live' },
         { order_index: 8, name: 'Quản Lý Công Việc Nội Bộ', description: 'Chuyển đổi số quy trình quản trị, đào tạo nhân sự cho doanh nghiệp SMEs.', segment: 'Doanh nghiệp', status: 'live' },
         { order_index: 9, name: 'Agent Kit / Subagent Workflow', description: 'Bộ công cụ cho lập trình viên để xây dựng các agent AI linh hoạt.', segment: 'Developer', status: 'live' },
@@ -113,7 +113,7 @@ export default function AdminProducts() {
           <select value={formData.segment} onChange={e => setFormData({...formData, segment: e.target.value})} style={{ padding: '10px', borderRadius: '6px', border: '1px solid #E2E6F0' }}>
             <option>Mầm non</option><option>Tiểu học</option><option>THCS</option><option>THPT</option>
             <option>Giáo viên</option><option>Nhà trường</option><option>Trung tâm</option><option>Đại học</option>
-            <option>Doanh nghiệp</option><option>Developer</option><option>Sản phẩm đặc biệt</option><option>Khác</option>
+            <option>Doanh nghiệp</option><option>Developer</option><option>Sản phẩm chiến lược</option><option>Sản phẩm đặc biệt</option><option>Khác</option>
           </select>
           <select value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})} style={{ padding: '10px', borderRadius: '6px', border: '1px solid #E2E6F0' }}>
             <option value="live">Đang hoạt động</option>

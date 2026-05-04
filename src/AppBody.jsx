@@ -4,8 +4,12 @@ import { supabase } from './lib/supabase';
 export default function AppBody() {
   const [content, setContent] = useState({});
   const [products, setProducts] = useState([]);
+  const [activeFilter, setActiveFilter] = useState('all');
   const [formState, setFormState] = useState({ name: '', phone: '', email: '', unit: '', segment: '', product: '', note: '' });
   const [formStatus, setFormStatus] = useState('idle');
+
+  const heroProduct = products.find(p => p.segment === 'Sản phẩm chiến lược');
+  const filteredProducts = products.filter(p => p.id !== heroProduct?.id && (activeFilter === 'all' || p.segment === activeFilter));
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -44,16 +48,8 @@ export default function AppBody() {
     };
     window.addEventListener('scroll', onScroll);
 
-    // Reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 60);
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Reveal observer logic moved to a separate useEffect
+
 
     // Hamburger
     const hamburger = document.getElementById('hamburger');
@@ -67,9 +63,23 @@ export default function AppBody() {
 
     return () => {
       window.removeEventListener('scroll', onScroll);
-      observer.disconnect();
     };
   }, []);
+
+  useEffect(() => {
+    // Reveal observer for dynamic content
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, [content, products, activeFilter]);
+
   const fetchData = async () => {
     const { data: contentData } = await supabase.from('site_content').select('*');
     if (contentData) {
@@ -312,43 +322,43 @@ export default function AppBody() {
       </p>
     </div>
     <div className="product-filter reveal">
-      <button className="filter-btn active" data-filter="all">Tất cả (10)</button>
-      <button className="filter-btn" data-filter="giaovien">🧑‍🏫 Giáo viên</button>
-      <button className="filter-btn" data-filter="nhaTruong">🏫 Nhà trường</button>
-      <button className="filter-btn" data-filter="trungTam">📚 Trung tâm</button>
-      <button className="filter-btn" data-filter="developer">👨‍💻 Developer</button>
+      <button className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`} onClick={() => setActiveFilter('all')}>Tất cả</button>
+      <button className={`filter-btn ${activeFilter === 'Giáo viên' ? 'active' : ''}`} onClick={() => setActiveFilter('Giáo viên')}>🧑‍🏫 Giáo viên</button>
+      <button className={`filter-btn ${activeFilter === 'Nhà trường' ? 'active' : ''}`} onClick={() => setActiveFilter('Nhà trường')}>🏫 Nhà trường</button>
+      <button className={`filter-btn ${activeFilter === 'Trung tâm' ? 'active' : ''}`} onClick={() => setActiveFilter('Trung tâm')}>📚 Trung tâm</button>
+      <button className={`filter-btn ${activeFilter === 'Developer' ? 'active' : ''}`} onClick={() => setActiveFilter('Developer')}>👨‍💻 Developer</button>
     </div>
     
     {/*  SẢN PHẨM CHIẾN LƯỢC (HERO PRODUCT)  */}
-    <div className="hero-product-banner reveal">
-      <div>
-        <div className="hp-badge">⭐ Sản phẩm chiến lược</div>
-        <h3 className="hp-title">Nền Tảng Quản Lý Khảo Thí & Đào Tạo Toàn Diện</h3>
-        <p className="hp-desc">
-          Hệ sinh thái số "All-in-one" kết nối thi trực tuyến, ôn luyện, học liệu và vận hành doanh thu cho trung tâm đào tạo. Kích hoạt gói tự động, hỗ trợ mạnh mẽ mô hình B2B2C.
-        </p>
-        <ul className="hp-features">
-          <li>Ngân hàng câu hỏi thông minh & tổ chức thi trực tuyến chống gian lận</li>
-          <li>Quản lý khóa học, phân phối học liệu số bảo mật</li>
-          <li>Tự động hóa hoàn toàn quy trình bán gói & kích hoạt dịch vụ</li>
-          <li>Dashboard quản lý đối tác đo lường doanh số & hoa hồng realtime</li>
-        </ul>
-        <div className="hp-actions">
-          <a href="#consult" className="btn btn-primary">Tư vấn ngay →</a>
-          <a href="#" className="btn btn-secondary" style={{"borderColor":"rgba(255,255,255,.3)","color":"#fff"}}>Xem Demo Sản Phẩm</a>
+    {heroProduct && (
+      <div className="hero-product-banner reveal">
+        <div>
+          <div className="hp-badge">⭐ Sản phẩm chiến lược</div>
+          <h3 className="hp-title">{heroProduct.name}</h3>
+          <p className="hp-desc">{heroProduct.description}</p>
+          <div className="hp-actions">
+            <a href="#consult" className="btn btn-primary">Tư vấn ngay →</a>
+            {heroProduct.link && <a href={heroProduct.link} target="_blank" rel="noreferrer" className="btn btn-secondary" style={{"borderColor":"rgba(255,255,255,.3)","color":"#fff"}}>Xem chi tiết</a>}
+          </div>
+        </div>
+        <div className="hp-visual">
+          <div className="hp-mockup" style={{ padding: heroProduct.image_url ? '0' : '30px', overflow: 'hidden' }}>
+            {heroProduct.image_url ? (
+              <img src={heroProduct.image_url} alt={heroProduct.name} style={{width:'100%', height:'100%', objectFit:'cover', borderRadius: '16px'}} />
+            ) : (
+              <>
+                <div className="hp-mockup-icon">🏆</div>
+                <div className="hp-mockup-text">{heroProduct.name}<br /><span style={{"fontSize":"14px","fontWeight":"400","color":"#fff"}}>Giải pháp công nghệ cốt lõi</span></div>
+              </>
+            )}
+          </div>
         </div>
       </div>
-      <div className="hp-visual">
-        <div className="hp-mockup">
-          <div className="hp-mockup-icon">🏆</div>
-          <div className="hp-mockup-text">Hệ Sinh Thái Khảo Thí LSE<br /><span style={{"fontSize":"14px","fontWeight":"400","color":"#fff"}}>Sẵn sàng vận hành 10,000+ học viên</span></div>
-        </div>
-      </div>
-    </div>
+    )}
     
     <div className="products-grid" id="products-grid">
-      {products.map(p => (
-        <div key={p.id} className={`product-card reveal ${p.segment === 'Sản phẩm đặc biệt' ? 'featured' : ''}`} data-cat="all">
+      {filteredProducts.map(p => (
+        <div key={p.id} className={`product-card reveal ${p.segment === 'Sản phẩm đặc biệt' ? 'featured' : ''}`}>
           <div className="product-header">
             <div className="product-icon" style={{ overflow: 'hidden' }}>
               {p.image_url ? <img src={p.image_url} alt={p.name} style={{width:'100%', height:'100%', objectFit:'cover'}} /> : '📦'}
