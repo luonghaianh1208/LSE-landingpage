@@ -74,7 +74,7 @@
     }
     .btn {
       display: inline-flex;
-      
+      align-items: center;
       gap: 8px;
       padding: 14px 28px;
       border-radius: 50px;
@@ -122,7 +122,7 @@
     }
     .nav-inner {
       display: flex;
-      
+      align-items: center;
       justify-content: space-between;
       height: 68px;
       max-width: 1160px;
@@ -131,7 +131,7 @@
     }
     .nav-logo {
       display: flex;
-      
+      align-items: center;
       gap: 10px;
       color: var(--white);
       font-weight: 800;
@@ -142,13 +142,13 @@
       background: var(--gold);
       border-radius: 10px;
       display: flex;
-      
+      align-items: center;
       justify-content: center;
       font-size: 18px;
     }
     .nav-links {
       display: flex;
-      
+      align-items: center;
       gap: 8px;
       list-style: none;
     }
@@ -200,7 +200,7 @@
       position: relative;
       overflow: hidden;
       display: flex;
-      
+      align-items: center;
       padding: 100px 0 60px;
     }
     #hero::before {
@@ -225,14 +225,14 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
-      
+      align-items: center;
       position: relative;
       z-index: 1;
     }
     .hero-content { color: var(--white); }
     .hero-eyebrow {
       display: inline-flex;
-      
+      align-items: center;
       gap: 8px;
       background: rgba(244,163,0,.15);
       border: 1px solid rgba(244,163,0,.3);
@@ -272,7 +272,7 @@
     .hero-visual {
       position: relative;
       display: flex;
-      
+      align-items: center;
       justify-content: center;
     }
     .hero-card-stack {
@@ -300,7 +300,8 @@
     .hero-card-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
     .hero-card-desc { font-size: 13px; color: rgba(255,255,255,.65); margin-bottom: 16px; }
     .hero-product-list {
-      
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
     }
     .hero-product-chip {
@@ -330,7 +331,7 @@
       line-height: 1.4;
       box-shadow: var(--shadow-lg);
       display: flex;
-      
+      align-items: center;
       gap: 8px;
       white-space: normal;
       max-width: 90%;
@@ -393,7 +394,7 @@
     }
     .pillar {
       display: flex;
-      
+      align-items: center;
       gap: 10px;
       background: rgba(255,255,255,.08);
       border: 1px solid rgba(255,255,255,.12);
@@ -442,7 +443,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
-      
+      align-items: center;
     }
     .about-text .badge { color: var(--navy); background: var(--gray-100); border-color: var(--gray-200); }
     .about-bullets { margin-top: 28px; }
@@ -459,7 +460,7 @@
       background: var(--navy);
       border-radius: 12px;
       display: flex;
-      
+      align-items: center;
       justify-content: center;
       font-size: 20px;
     }
@@ -487,7 +488,7 @@
       padding-bottom: 28px;
       border-bottom: 1px solid rgba(255,255,255,.15);
     }
-    .about-tags {  gap: 8px; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .about-tag {
       background: rgba(255,255,255,.1);
       border: 1px solid rgba(255,255,255,.15);
@@ -582,7 +583,7 @@
       border-radius: 14px;
       background: var(--navy);
       display: flex;
-      
+      align-items: center;
       justify-content: center;
       font-size: 24px;
     }
@@ -646,7 +647,7 @@
     }
     .product-cta {
       display: inline-flex;
-      
+      align-items: center;
       gap: 6px;
       font-size: 14px;
       font-weight: 700;
@@ -685,7 +686,7 @@
       background: var(--navy);
       border-radius: 50%;
       display: flex;
-      
+      align-items: center;
       justify-content: center;
       font-size: 28px;
       margin: 0 auto 16px;
@@ -693,7 +694,8 @@
     .customer-name { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
     .customer-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; margin-bottom: 14px; }
     .customer-needs {
-      
+      display: flex;
+      flex-wrap: wrap;
       gap: 6px;
       justify-content: center;
     }
@@ -764,7 +766,7 @@
     .consult-benefits { list-style: none; }
     .consult-benefits li {
       display: flex;
-      
+      align-items: center;
       gap: 12px;
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,.08);
@@ -777,7 +779,7 @@
       background: rgba(244,163,0,.2);
       border-radius: 50%;
       display: flex;
-      
+      align-items: center;
       justify-content: center;
       font-size: 14px;
     }
@@ -788,7 +790,7 @@
     }
     .contact-row {
       display: flex;
-      
+      align-items: center;
       gap: 12px;
       margin-bottom: 12px;
       font-size: 14px;
@@ -846,7 +848,7 @@
       font-family: 'Be Vietnam Pro', sans-serif;
       transition: .22s;
       display: flex;
-      
+      align-items: center;
       justify-content: center;
       gap: 10px;
       margin-top: 8px;
@@ -891,7 +893,7 @@
       background: rgba(255,255,255,.08);
       border-radius: 8px;
       display: flex;
-      
+      align-items: center;
       justify-content: center;
       font-size: 16px;
       transition: .2s;
@@ -904,7 +906,7 @@
     .footer-links a:hover { color: var(--gold); }
     .footer-contact li { margin-bottom: 10px; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
     .footer-divider { height: 1px; background: rgba(255,255,255,.08); margin-bottom: 24px; }
-    .footer-bottom { display: flex; justify-content: space-between;  flex-wrap: wrap; gap: 12px; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     .footer-copy { font-size: 12px; }
     .footer-legal { display: flex; gap: 20px; }
     .footer-legal a { font-size: 12px; color: rgba(255,255,255,.45); }
@@ -940,7 +942,7 @@
       color: var(--white);
       border-radius: 12px;
       display: none;
-      
+      align-items: center;
       justify-content: center;
       font-size: 18px;
       cursor: pointer;
@@ -970,7 +972,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
-      
+      align-items: center;
       position: relative;
       overflow: hidden;
       box-shadow: var(--shadow-lg);
@@ -1008,8 +1010,8 @@
     .hp-features li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 15px; font-weight: 500; color: rgba(255,255,255,.9); }
     .hp-features li::before { content: '🏆'; font-size: 16px; margin-top: 2px; }
     .hp-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .hp-visual { position: relative; display: flex;  justify-content: center; }
-    .hp-mockup { background: rgba(255,255,255,.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 24px; width: 100%; aspect-ratio: 4/3; display: flex;  justify-content: center; flex-direction: column; gap: 16px; }
+    .hp-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+    .hp-mockup { background: rgba(255,255,255,.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 24px; width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; }
     .hp-mockup-icon { font-size: 72px; animation: float-anim 3s ease-in-out infinite; }
     .hp-mockup-text { font-size: 18px; font-weight: 700; color: var(--gold); text-align: center; }
     
@@ -1030,8 +1032,8 @@
     .testi-card { width: 340px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 4px 16px rgba(0,0,0,.03); transition: transform .3s ease; cursor: grab; }
     .testi-card:hover { transform: translateY(-5px); border-color: var(--navy-light); box-shadow: var(--shadow); }
     .testi-quote { font-size: 14px; font-style: italic; color: var(--gray-600); line-height: 1.6; flex: 1; }
-    .testi-author { display: flex;  gap: 12px; border-top: 1px solid var(--gray-200); padding-top: 16px; }
-    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); display: flex;  justify-content: center; font-size: 18px; color: var(--gold); font-weight: 700; }
+    .testi-author { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--gray-200); padding-top: 16px; }
+    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--gold); font-weight: 700; }
     .testi-info { display: flex; flex-direction: column; }
     .testi-name { font-size: 14px; font-weight: 800; color: var(--navy); }
     .testi-role { font-size: 12px; color: var(--gray-600); font-weight: 500; }
@@ -1132,45 +1134,10 @@
       transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.2s ease;
     }
     .btn:active { transform: scale(0.96); }
-    
-    /* Infinite Marquee for Customers */
-    .marquee-wrapper {
-      overflow: hidden;
-      white-space: nowrap;
-      position: relative;
-      width: 100%;
-      display: flex;
-    }
-    .marquee-track {
-      display: flex;
-      gap: 32px;
-      animation: marquee 30s linear infinite;
-    }
-    .marquee-track:hover { animation-play-state: paused; }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .marquee-wrapper::before, .marquee-wrapper::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 100px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .marquee-wrapper::before {
-      left: 0;
-      background: linear-gradient(to right, var(--white), transparent);
-    }
-    .marquee-wrapper::after {
-      right: 0;
-      background: linear-gradient(to left, var(--white), transparent);
-    }
 
     /* Override mission pillars for Bento */
     .mission-pillars {
-      display: grid;
+      display: grid !important;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
       margin-top: 32px;
@@ -1178,11 +1145,11 @@
     .mission-pillars .pillar {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 24px;
+      border-radius: 20px !important;
+      padding: 24px !important;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: flex-start !important;
       gap: 12px;
       backdrop-filter: blur(10px);
       transition: transform 0.3s ease;
@@ -1217,6 +1184,165 @@
     .about-visual {
       border-radius: 32px;
     }
+
+    /* ─── MODERN BENTO & GLASS UI ─── */
+    :root {
+      --navy: #0A1128; /* Deeper tech navy */
+      --navy-dark: #050B14;
+      --navy-light: #162447;
+      --bento-bg: #F5F5F7;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Hero Glassmorphism */
+    #hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy-dark);
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; left: -10%;
+      width: 50%; height: 70%;
+      background: radial-gradient(circle, rgba(244,163,0,0.15) 0%, rgba(244,163,0,0) 70%);
+      filter: blur(60px);
+      z-index: 0;
+      animation: floatBlob 10s ease-in-out infinite alternate;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%; right: -10%;
+      width: 60%; height: 60%;
+      background: radial-gradient(circle, rgba(36,61,120,0.4) 0%, rgba(36,61,120,0) 70%);
+      filter: blur(80px);
+      z-index: 0;
+      animation: floatBlob 15s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes floatBlob {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, 50px) scale(1.1); }
+    }
+    .hero-content, .hero-visual { position: relative; z-index: 1; }
+    
+    /* Glass Product Cards */
+    .product-card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: var(--radius-lg);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 20px 40px rgba(10, 17, 40, 0.12);
+      border-color: rgba(10, 17, 40, 0.1);
+    }
+    
+    /* Bento Box Styles */
+    .bento-cell {
+      background: var(--bento-bg);
+      border-radius: 24px;
+      padding: 32px;
+      transition: transform 0.3s ease;
+    }
+    .bento-cell:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.04);
+    }
+    
+    /* Magnetic Buttons */
+    .btn {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .btn:active { transform: scale(0.96); }
+
+    /* Override mission pillars for Bento */
+    .mission-pillars {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .mission-pillars .pillar {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px !important;
+      padding: 24px !important;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start !important;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+    .mission-pillars .pillar:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.1);
+    }
+    
+    /* Override Stats for Bento */
+    .stats-grid .stat-card {
+      background: var(--bento-bg);
+      border-radius: 24px;
+      border: none;
+      box-shadow: none;
+      transition: transform 0.3s ease;
+    }
+    .stats-grid .stat-card:hover {
+      transform: translateY(-4px);
+      background: var(--white);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+    }
+
+    /* About Bento Grid */
+    .about-bullet {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+    .about-visual {
+      border-radius: 32px;
+    }
+
+    /* Infinite Marquee Fix */
+    .marquee-container {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      width: 100%;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 24px;
+      width: max-content;
+      animation: marquee 25s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-container::before, .marquee-container::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-container::before {
+      left: 0;
+      background: linear-gradient(to right, var(--white), transparent);
+    }
+    .marquee-container::after {
+      right: 0;
+      background: linear-gradient(to left, var(--white), transparent);
+    }
+    .testi-card { min-width: 350px; }
 </style>
 </head>
 <body>
@@ -1702,10 +1828,8 @@
       <h2 class="section-title">Phục vụ ai?</h2>
       <p class="section-subtitle">LSE có giải pháp phù hợp cho mọi đối tượng trong hệ sinh thái giáo dục Việt Nam.</p>
     </div>
-    <div class="marquee-wrapper reveal">
-      <div class="marquee-track">
-        <div style="display:flex; gap: 32px; align-items: stretch;">
-      <div class="customer-card" style="min-width: 300px;">
+    <div class="customers-grid reveal">
+      <div class="customer-card">
         <div class="customer-icon">🧑‍🏫</div>
         <div class="customer-name">Giáo viên / Giảng viên</div>
         <div class="customer-desc">Đang đứng lớp, bận rộn, muốn nâng cao năng lực và tiết kiệm thời gian chuẩn bị bài.</div>
@@ -1715,7 +1839,7 @@
           <span class="customer-need">Tiết kiệm thời gian</span>
         </div>
       </div>
-      <div class="customer-card" style="min-width: 300px;">
+      <div class="customer-card">
         <div class="customer-icon">🏫</div>
         <div class="customer-name">Nhà trường / Sở GD</div>
         <div class="customer-desc">Lãnh đạo, ban giám hiệu cần giải pháp tổng thể, tuân thủ chính sách Bộ GD&ĐT, ROI rõ ràng.</div>
@@ -1725,7 +1849,7 @@
           <span class="customer-need">Chính sách BộGD</span>
         </div>
       </div>
-      <div class="customer-card" style="min-width: 300px;">
+      <div class="customer-card">
         <div class="customer-icon">📚</div>
         <div class="customer-name">Trung tâm / Edtech</div>
         <div class="customer-desc">Chủ trung tâm, startup giáo dục cần tăng doanh thu, tối ưu vận hành và marketing hiệu quả.</div>
@@ -1735,7 +1859,7 @@
           <span class="customer-need">Marketing</span>
         </div>
       </div>
-      <div class="customer-card" style="min-width: 300px;">
+      <div class="customer-card">
         <div class="customer-icon">🏢</div>
         <div class="customer-name">Doanh nghiệp <span style="font-size:11px;font-weight:500;color:#888">(sắp ra mắt)</span></div>
         <div class="customer-desc">HR, L&D, CEO SME cần đào tạo nhân sự hiệu quả và chuyển đổi số quy trình nội bộ.</div>
@@ -1873,179 +1997,6 @@
         <div class="why-num">06</div>
         <div class="why-title">Đội ngũ đồng hành, không bán xong bỏ</div>
         <div class="why-desc">LSE cam kết đồng hành từ tư vấn, triển khai, đào tạo đến hỗ trợ vận hành liên tục. Mục tiêu của chúng tôi là đơn vị của bạn thực sự hưởng lợi từ công nghệ.</div>
-      </div>
-    </div>
-        <div style="display:flex; gap: 32px; align-items: stretch;" aria-hidden="true">
-      <div class="customer-card" style="min-width: 300px;">
-        <div class="customer-icon">🧑‍🏫</div>
-        <div class="customer-name">Giáo viên / Giảng viên</div>
-        <div class="customer-desc">Đang đứng lớp, bận rộn, muốn nâng cao năng lực và tiết kiệm thời gian chuẩn bị bài.</div>
-        <div class="customer-needs">
-          <span class="customer-need">Soạn bài nhanh</span>
-          <span class="customer-need">Ứng dụng AI</span>
-          <span class="customer-need">Tiết kiệm thời gian</span>
-        </div>
-      </div>
-      <div class="customer-card" style="min-width: 300px;">
-        <div class="customer-icon">🏫</div>
-        <div class="customer-name">Nhà trường / Sở GD</div>
-        <div class="customer-desc">Lãnh đạo, ban giám hiệu cần giải pháp tổng thể, tuân thủ chính sách Bộ GD&ĐT, ROI rõ ràng.</div>
-        <div class="customer-needs">
-          <span class="customer-need">Giải pháp tổng thể</span>
-          <span class="customer-need">Báo cáo</span>
-          <span class="customer-need">Chính sách BộGD</span>
-        </div>
-      </div>
-      <div class="customer-card" style="min-width: 300px;">
-        <div class="customer-icon">📚</div>
-        <div class="customer-name">Trung tâm / Edtech</div>
-        <div class="customer-desc">Chủ trung tâm, startup giáo dục cần tăng doanh thu, tối ưu vận hành và marketing hiệu quả.</div>
-        <div class="customer-needs">
-          <span class="customer-need">Tăng doanh thu</span>
-          <span class="customer-need">Tối ưu vận hành</span>
-          <span class="customer-need">Marketing</span>
-        </div>
-      </div>
-      <div class="customer-card" style="min-width: 300px;">
-        <div class="customer-icon">🏢</div>
-        <div class="customer-name">Doanh nghiệp <span style="font-size:11px;font-weight:500;color:#888">(sắp ra mắt)</span></div>
-        <div class="customer-desc">HR, L&D, CEO SME cần đào tạo nhân sự hiệu quả và chuyển đổi số quy trình nội bộ.</div>
-        <div class="customer-needs">
-          <span class="customer-need">Đào tạo nhân sự</span>
-          <span class="customer-need">Chuyển đổi số</span>
-          <span class="customer-need">Quy trình nội bộ</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ─── TESTIMONIALS ─── -->
-<section id="testimonials" class="section">
-  <div class="text-center reveal">
-    <div class="badge">Phản hồi khách hàng</div>
-    <h2 class="section-title">Niềm tin từ hệ sinh thái giáo dục</h2>
-    <p class="section-subtitle">Hàng ngàn giáo viên, học sinh và nhà quản lý đã trải nghiệm sự khác biệt mà công nghệ AI của Lam Sơn Edutech mang lại.</p>
-  </div>
-  <div class="marquee-container reveal">
-    <div class="marquee-track">
-      <div class="testi-card">
-        <div class="testi-quote">"Từ khi dùng Trợ Lý Giáo Viên Toàn Năng, tôi không còn thức đêm soạn giáo án. AI xử lý cấu trúc bài giảng quá thông minh, chuẩn xác."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">👩‍🏫</div>
-          <div class="testi-info"><span class="testi-name">Cô Nguyễn H. Phương</span><span class="testi-role">Giáo viên Toán cấp 3</span></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"Tôi rất bất ngờ với Phần mềm quản lí nền nếp học đường. Báo cáo tự động mỗi tuần giúp Ban Giám Hiệu nắm bắt tình hình tức thì, không phải chờ giáo viên nộp sổ."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">👨‍💼</div>
-          <div class="testi-info"><span class="testi-name">Thầy Phạm V. Tuấn</span><span class="testi-role">Hiệu phó trường THPT</span></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"Hệ thống Khảo thí và Hệ thống mini LMS AI cá nhân hóa lộ trình học tập giúp trung tâm mình tự động hóa khâu chấm bài IELTS. Doanh thu tăng 30% vì giáo viên nhận được nhiều lớp hơn."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">🏢</div>
-          <div class="testi-info"><span class="testi-name">Anh Lê T. Phong</span><span class="testi-role">Giám đốc Trung tâm Anh Ngữ</span></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"Robot Học Tập AI thực sự là người bạn tuyệt vời của con trai mình. Bé tự tin giao tiếp, hay đặt câu hỏi hơn và không còn lười học từ vựng nữa."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">👨‍👩‍👦</div>
-          <div class="testi-info"><span class="testi-name">Chị Trần M. Lan</span><span class="testi-role">Phụ huynh học sinh Tiểu học</span></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"Bài test hướng nghiệp AI siêu chuẩn! Nó không chỉ chỉ ra nghề hợp với em mà còn cảnh báo những ngành dễ bị AI thay thế để em chọn trường đúng đắn hơn."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">🎓</div>
-          <div class="testi-info"><span class="testi-name">Bạn Hoàng D. Anh</span><span class="testi-role">Học sinh lớp 12</span></div>
-        </div>
-      </div>
-      
-      <!-- Duplicate for infinite scrolling -->
-      <div class="testi-card">
-        <div class="testi-quote">"Từ khi dùng Trợ Lý Giáo Viên Toàn Năng, tôi không còn thức đêm soạn giáo án. AI xử lý cấu trúc bài giảng quá thông minh, chuẩn xác."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">👩‍🏫</div>
-          <div class="testi-info"><span class="testi-name">Cô Nguyễn H. Phương</span><span class="testi-role">Giáo viên Toán cấp 3</span></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"Tôi rất bất ngờ với Phần mềm quản lí nền nếp học đường. Báo cáo tự động mỗi tuần giúp Ban Giám Hiệu nắm bắt tình hình tức thì, không phải chờ giáo viên nộp sổ."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">👨‍💼</div>
-          <div class="testi-info"><span class="testi-name">Thầy Phạm V. Tuấn</span><span class="testi-role">Hiệu phó trường THPT</span></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"Hệ thống Khảo thí và Hệ thống mini LMS AI cá nhân hóa lộ trình học tập giúp trung tâm mình tự động hóa khâu chấm bài IELTS. Doanh thu tăng 30% vì giáo viên nhận được nhiều lớp hơn."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">🏢</div>
-          <div class="testi-info"><span class="testi-name">Anh Lê T. Phong</span><span class="testi-role">Giám đốc Trung tâm Anh Ngữ</span></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"Robot Học Tập AI thực sự là người bạn tuyệt vời của con trai mình. Bé tự tin giao tiếp, hay đặt câu hỏi hơn và không còn lười học từ vựng nữa."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">👨‍👩‍👦</div>
-          <div class="testi-info"><span class="testi-name">Chị Trần M. Lan</span><span class="testi-role">Phụ huynh học sinh Tiểu học</span></div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"Bài test hướng nghiệp AI siêu chuẩn! Nó không chỉ chỉ ra nghề hợp với em mà còn cảnh báo những ngành dễ bị AI thay thế để em chọn trường đúng đắn hơn."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">🎓</div>
-          <div class="testi-info"><span class="testi-name">Bạn Hoàng D. Anh</span><span class="testi-role">Học sinh lớp 12</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── WHY LSE ─── -->
-<section id="why" class="section">
-  <div class="container">
-    <div class="text-center reveal">
-      <div class="badge">Tại sao chọn LSE?</div>
-      <h2 class="section-title">Khác biệt cốt lõi</h2>
-      <p class="section-subtitle">Không phải phần mềm đơn thuần — LSE là đối tác chuyển đổi số giáo dục dài hạn của bạn.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <div class="why-num">01</div>
-        <div class="why-title">AI tích hợp thực sự, không chỉ là tên gọi</div>
-        <div class="why-desc">Toàn bộ 10 sản phẩm của LSE đều tích hợp AI vào nghiệp vụ cốt lõi — không phải chỉ là chatbot hay "tính năng thêm". AI là lõi vận hành của từng giải pháp.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-num">02</div>
-        <div class="why-title">Thiết kế riêng cho giáo dục Việt Nam</div>
-        <div class="why-desc">Từ chuẩn CV 5512, chương trình GDPT 2018 đến đặc thù văn hóa lớp học — mọi chi tiết đều được tối ưu cho ngữ cảnh Việt Nam, không phải bản dịch từ nước ngoài.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-num">03</div>
-        <div class="why-title">Đã thực chiến tại trường học & trung tâm</div>
-        <div class="why-desc">Không chỉ là demo — các sản phẩm của LSE đã và đang vận hành thực tế tại nhiều trường THPT và trung tâm đào tạo, được kiểm chứng bởi người dùng thực.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-num">04</div>
-        <div class="why-title">Hệ sinh thái đồng bộ, không rời rạc</div>
-        <div class="why-desc">Các sản phẩm LSE được thiết kế để hoạt động cùng nhau trong một hệ sinh thái — giáo viên, nhà trường, trung tâm có thể triển khai nhiều giải pháp tích hợp liền mạch.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-num">05</div>
-        <div class="why-title">Triển khai nhanh, không cần hạ tầng phức tạp</div>
-        <div class="why-desc">Tất cả sản phẩm chạy trên nền web, PWA hoặc cloud — không yêu cầu server riêng hay đội IT phức tạp. Đơn vị nhỏ vẫn dùng được ngay sau vài giờ thiết lập.</div>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-num">06</div>
-        <div class="why-title">Đội ngũ đồng hành, không bán xong bỏ</div>
-        <div class="why-desc">LSE cam kết đồng hành từ tư vấn, triển khai, đào tạo đến hỗ trợ vận hành liên tục. Mục tiêu của chúng tôi là đơn vị của bạn thực sự hưởng lợi từ công nghệ.</div>
-      </div>
-    </div>
       </div>
     </div>
   </div>
