@@ -11,23 +11,24 @@
   <style>
     :root {
       --navy: #1B2F5E;
-      --navy-dark: #111f42;
-      --navy-light: #243d78;
-      --gold: #F4A300;
-      --gold-light: #FFB92E;
-      --gold-pale: #FFF3D6;
+      --navy-dark: #0F1D3A;
+      --navy-light: #2A4A8C;
+      --gold: #E5A211;
+      --gold-light: #F0B42A;
+      --gold-pale: #FFF8EB;
       --white: #ffffff;
-      --gray-50: #F8F9FC;
+      --gray-50: #FAFBFE;
       --gray-100: #F0F2F8;
       --gray-200: #E2E6F0;
-      --gray-400: #9AAABB;
+      --gray-400: #94A3B8;
       --gray-600: #5A6A80;
       --gray-800: #2D3748;
-      --text: #1a2640;
+      --text: #1B2F5E;
+      --bento-bg: #F0F2F8;
       --radius: 12px;
       --radius-lg: 20px;
-      --shadow: 0 4px 24px rgba(27,47,94,0.10);
-      --shadow-lg: 0 12px 48px rgba(27,47,94,0.18);
+      --shadow: 0 2px 16px rgba(27,47,94,0.08);
+      --shadow-lg: 0 8px 32px rgba(27,47,94,0.12);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -43,19 +44,19 @@
 
     /* ─── UTILITIES ─── */
     .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 80px 0; }
-    .section-sm { padding: 56px 0; }
+    .section { padding: 96px 0; }
+    .section-sm { padding: 64px 0; }
     .text-center { text-align: center; }
     .badge {
       display: inline-block;
       background: var(--gold-pale);
       color: var(--gold);
-      border: 1px solid var(--gold-light);
+      border: 1px solid rgba(212,148,12,.2);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
-      padding: 5px 14px;
+      padding: 6px 16px;
       border-radius: 50px;
       margin-bottom: 16px;
     }
@@ -69,8 +70,9 @@
     .section-subtitle {
       font-size: 17px;
       color: var(--gray-600);
-      max-width: 640px;
+      max-width: 680px;
       margin: 0 auto 48px;
+      text-wrap: balance;
     }
     .btn {
       display: inline-flex;
@@ -89,7 +91,7 @@
       background: var(--gold);
       color: var(--navy-dark);
     }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(244,163,0,.4); }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,148,12,.35); }
     .btn-secondary {
       background: transparent;
       color: var(--white);
@@ -116,9 +118,9 @@
       transition: all .3s ease;
     }
     #navbar.scrolled {
-      background: rgba(17,31,66,.97);
+      background: rgba(15,29,58,.97);
       backdrop-filter: blur(12px);
-      box-shadow: 0 2px 24px rgba(0,0,0,.25);
+      box-shadow: 0 2px 16px rgba(15,29,58,.2);
     }
     .nav-inner {
       display: flex;
@@ -196,7 +198,7 @@
     /* ─── HERO ─── */
     #hero {
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, #1e4080 100%);
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-light) 100%);
       position: relative;
       overflow: hidden;
       display: flex;
@@ -209,7 +211,7 @@
       top: -200px; right: -200px;
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(244,163,0,.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(212,148,12,.15) 0%, transparent 70%);
       pointer-events: none;
     }
     #hero::after {
@@ -223,8 +225,8 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 48px;
       align-items: center;
       position: relative;
       z-index: 1;
@@ -234,8 +236,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(244,163,0,.15);
-      border: 1px solid rgba(244,163,0,.3);
+      background: rgba(212,148,12,.15);
+      border: 1px solid rgba(212,148,12,.25);
       color: var(--gold-light);
       font-size: 13px;
       font-weight: 600;
@@ -245,10 +247,10 @@
       letter-spacing: .04em;
     }
     .hero-title {
-      font-size: clamp(32px, 5vw, 54px);
+      font-size: clamp(30px, 4.5vw, 48px);
       font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 20px;
+      line-height: 1.18;
+      margin-bottom: 24px;
     }
     .hero-title span { color: var(--gold); }
     .hero-desc {
@@ -305,8 +307,8 @@
       gap: 8px;
     }
     .hero-product-chip {
-      background: rgba(244,163,0,.15);
-      border: 1px solid rgba(244,163,0,.25);
+      background: rgba(212,148,12,.15);
+      border: 1px solid rgba(212,148,12,.2);
       color: var(--gold-light);
       font-size: 11px;
       font-weight: 600;
@@ -417,15 +419,19 @@
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      background: var(--gray-200);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
+      gap: 20px;
     }
     .stat-card {
       background: var(--white);
       padding: 40px 32px;
       text-align: center;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
     }
     .stat-num {
       font-size: 42px;
@@ -456,10 +462,14 @@
     .about-bullet {
       display: flex;
       gap: 14px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--gray-100);
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+      margin-bottom: 12px;
+      transition: transform .25s ease, box-shadow .25s ease;
     }
-    .about-bullet:last-child { border-bottom: none; }
+    .about-bullet:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .about-bullet:last-child { margin-bottom: 0; }
     .bullet-icon {
       width: 44px; height: 44px;
       min-width: 44px;
@@ -574,7 +584,7 @@
       opacity: 0;
       transition: .25s;
     }
-    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--gray-200); }
     .product-card:hover::before { opacity: 1; }
     .product-card.featured {
       background: linear-gradient(145deg, var(--navy) 0%, var(--navy-light) 100%);
@@ -587,7 +597,7 @@
     .product-icon {
       width: 52px; height: 52px;
       border-radius: 14px;
-      background: var(--navy);
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -689,7 +699,7 @@
     .customer-card:hover { border-color: var(--navy); transform: translateY(-3px); box-shadow: var(--shadow); }
     .customer-icon {
       width: 64px; height: 64px;
-      background: var(--navy);
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -734,7 +744,7 @@
     .why-num {
       font-size: 48px;
       font-weight: 900;
-      color: var(--gray-100);
+      color: var(--gray-200);
       line-height: 1;
       margin-bottom: 16px;
     }
@@ -755,7 +765,7 @@
       top: -200px; right: -200px;
       width: 600px; height: 600px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(244,163,0,.1) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(212,148,12,.1) 0%, transparent 70%);
     }
     .consult-grid {
       display: grid;
@@ -766,7 +776,7 @@
       z-index: 1;
     }
     .consult-left { color: var(--white); }
-    .consult-left .badge { background: rgba(244,163,0,.15); color: var(--gold); border-color: rgba(244,163,0,.3); }
+    .consult-left .badge { background: rgba(212,148,12,.15); color: var(--gold); border-color: rgba(212,148,12,.25); }
     .consult-title { font-size: clamp(26px, 4vw, 38px); font-weight: 900; margin-bottom: 16px; }
     .consult-desc { font-size: 16px; color: rgba(255,255,255,.7); margin-bottom: 36px; line-height: 1.7; }
     .consult-benefits { list-style: none; }
@@ -782,7 +792,7 @@
     .consult-benefits li:last-child { border-bottom: none; }
     .benefit-dot {
       width: 32px; height: 32px; min-width: 32px;
-      background: rgba(244,163,0,.2);
+      background: rgba(212,148,12,.2);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -859,7 +869,7 @@
       gap: 10px;
       margin-top: 8px;
     }
-    .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(244,163,0,.4); }
+    .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,148,12,.35); }
     .form-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
     .form-note { font-size: 12px; color: var(--gray-400); text-align: center; margin-top: 12px; }
     /* Success state */
@@ -982,14 +992,14 @@
       position: relative;
       overflow: hidden;
       box-shadow: var(--shadow-lg);
-      border: 1px solid rgba(244,163,0,.3);
+      border: 1px solid rgba(212,148,12,.25);
     }
     .hero-product-banner::before {
       content: '';
       position: absolute;
       top: -50%; left: -50%;
       width: 200%; height: 200%;
-      background: radial-gradient(circle, rgba(244,163,0,.08) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(212,148,12,.08) 0%, transparent 60%);
       animation: pulse-glow 8s ease-in-out infinite alternate;
       pointer-events: none;
     }
@@ -1008,7 +1018,7 @@
       margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: .08em;
-      box-shadow: 0 4px 12px rgba(244,163,0,.3);
+      box-shadow: 0 4px 12px rgba(212,148,12,.25);
     }
     .hp-title { font-size: 32px; font-weight: 900; margin-bottom: 16px; line-height: 1.2; color: var(--white); }
     .hp-desc { font-size: 16px; color: rgba(255,255,255,.8); margin-bottom: 24px; line-height: 1.6; }
@@ -1035,7 +1045,7 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-    .testi-card { width: 340px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 4px 16px rgba(0,0,0,.03); transition: transform .3s ease; cursor: grab; }
+    .testi-card { width: 340px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 4px 16px rgba(0,0,0,.03); transition: transform .3s ease; cursor: grab; white-space: normal; }
     .testi-card:hover { transform: translateY(-5px); border-color: var(--navy-light); box-shadow: var(--shadow); }
     .testi-quote { font-size: 14px; font-style: italic; color: var(--gray-600); line-height: 1.6; flex: 1; }
     .testi-author { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--gray-200); padding-top: 16px; }
@@ -1068,28 +1078,13 @@
     .hero-title, .section-title, .mission-title { text-wrap: balance; }
 
   
-    /* ─── MODERN BENTO & GLASS UI ─── */
-    :root {
-      --navy: #0A1128; /* Deeper tech navy */
-      --navy-dark: #050B14;
-      --navy-light: #162447;
-      --bento-bg: #F5F5F7;
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --glass-border: rgba(255, 255, 255, 0.1);
-    }
-    
-    /* Hero Glassmorphism */
-    #hero {
-      position: relative;
-      overflow: hidden;
-      background: var(--navy-dark);
-    }
+    /* ─── REFINED ANIMATIONS ─── */
     #hero::before {
       content: '';
       position: absolute;
       top: -20%; left: -10%;
       width: 50%; height: 70%;
-      background: radial-gradient(circle, rgba(244,163,0,0.15) 0%, rgba(244,163,0,0) 70%);
+      background: radial-gradient(circle, rgba(212,148,12,0.15) 0%, rgba(212,148,12,0) 70%);
       filter: blur(60px);
       z-index: 0;
       animation: floatBlob 10s ease-in-out infinite alternate;
@@ -1110,186 +1105,40 @@
     }
     .hero-content, .hero-visual { position: relative; z-index: 1; }
     
-    /* Glass Product Cards */
-    .product-card {
-      background: var(--white);
-      border: 1px solid rgba(0,0,0,0.05);
-      border-radius: var(--radius-lg);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .product-card:hover {
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 20px 40px rgba(10, 17, 40, 0.12);
-      border-color: rgba(10, 17, 40, 0.1);
-    }
-    
-    /* Bento Box Styles */
-    .bento-cell {
-      background: var(--bento-bg);
-      border-radius: 24px;
-      padding: 32px;
-      transition: transform 0.3s ease;
-    }
-    .bento-cell:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.04);
-    }
-    
-    /* Magnetic Buttons */
+    /* Refined Interactions */
     .btn {
       transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.2s ease;
     }
     .btn:active { transform: scale(0.96); }
 
-
-    
-    /* Override Stats for Bento */
-    .stats-grid .stat-card {
-      background: var(--bento-bg);
-      border-radius: 24px;
-      border: none;
-      box-shadow: none;
-      transition: transform 0.3s ease;
-    }
-    .stats-grid .stat-card:hover {
-      transform: translateY(-4px);
-      background: var(--white);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.06);
-    }
-
-    /* About Bento Grid */
-    .about-bullet {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-      border: 1px solid rgba(0,0,0,0.03);
-    }
-    .about-visual {
-      border-radius: 32px;
-    }
-
-    /* ─── MODERN BENTO & GLASS UI ─── */
-    :root {
-      --navy: #0A1128; /* Deeper tech navy */
-      --navy-dark: #050B14;
-      --navy-light: #162447;
-      --bento-bg: #F5F5F7;
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --glass-border: rgba(255, 255, 255, 0.1);
-    }
-    
-    /* Hero Glassmorphism */
-    #hero {
-      position: relative;
-      overflow: hidden;
-      background: var(--navy-dark);
-    }
-    #hero::before {
-      content: '';
-      position: absolute;
-      top: -20%; left: -10%;
-      width: 50%; height: 70%;
-      background: radial-gradient(circle, rgba(244,163,0,0.15) 0%, rgba(244,163,0,0) 70%);
-      filter: blur(60px);
-      z-index: 0;
-      animation: floatBlob 10s ease-in-out infinite alternate;
-    }
-    #hero::after {
-      content: '';
-      position: absolute;
-      bottom: -20%; right: -10%;
-      width: 60%; height: 60%;
-      background: radial-gradient(circle, rgba(36,61,120,0.4) 0%, rgba(36,61,120,0) 70%);
-      filter: blur(80px);
-      z-index: 0;
-      animation: floatBlob 15s ease-in-out infinite alternate-reverse;
-    }
-    @keyframes floatBlob {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(30px, 50px) scale(1.1); }
-    }
-    .hero-content, .hero-visual { position: relative; z-index: 1; }
-    
-    /* Glass Product Cards */
-    .product-card {
-      background: var(--white);
-      border: 1px solid rgba(0,0,0,0.05);
-      border-radius: var(--radius-lg);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .product-card:hover {
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 20px 40px rgba(10, 17, 40, 0.12);
-      border-color: rgba(10, 17, 40, 0.1);
-    }
-    
-    /* Bento Box Styles */
-    .bento-cell {
-      background: var(--bento-bg);
-      border-radius: 24px;
-      padding: 32px;
-      transition: transform 0.3s ease;
-    }
-    .bento-cell:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.04);
-    }
-    
-    /* Magnetic Buttons */
-    .btn {
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.2s ease;
-    }
-    .btn:active { transform: scale(0.96); }
-
-    /* Override mission pillars for Bento */
+    /* Override mission pillars */
     .mission-pillars {
-      display: grid !important;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 16px;
       margin-top: 32px;
     }
     .mission-pillars .pillar {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px !important;
-      padding: 24px !important;
+      border-radius: 16px;
+      padding: 18px 24px;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start !important;
-      gap: 12px;
+      align-items: center;
+      gap: 10px;
       backdrop-filter: blur(10px);
       transition: transform 0.3s ease;
+      font-size: 15px;
     }
     .mission-pillars .pillar:hover {
       transform: translateY(-4px);
       background: rgba(255,255,255,0.1);
     }
     
-    /* Override Stats for Bento */
-    .stats-grid .stat-card {
-      background: var(--bento-bg);
-      border-radius: 24px;
-      border: none;
-      box-shadow: none;
-      transition: transform 0.3s ease;
-    }
-    .stats-grid .stat-card:hover {
-      transform: translateY(-4px);
-      background: var(--white);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.06);
-    }
-
-    /* About Bento Grid */
-    .about-bullet {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-      border: 1px solid rgba(0,0,0,0.03);
-    }
+    /* About refined */
     .about-visual {
-      border-radius: 32px;
+      border-radius: var(--radius-lg);
     }
 
     /* Infinite Marquee Fix */
@@ -1519,7 +1368,7 @@
         </div>
       </div>
       <div class="about-visual reveal">
-        <img src="assets/logo.png" alt="Lam Sơn Edutech" style="height: 80px; margin-bottom: 20px; filter: brightness(0) invert(1);">
+        <img src="assets/logo.png" alt="Lam Sơn Edutech" style="height: 72px; margin-bottom: 20px; background: #fff; border-radius: 12px; padding: 10px 16px;">
         <div class="about-mission-quote">
           "Số hóa giáo dục, đồng hành cùng giáo viên & trung tâm phát triển bền vững"
         </div>
@@ -2101,7 +1950,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand-name">Lam Sơn <span>Edutech</span></div>
+        <img src="assets/logo.png" alt="Lam Sơn Edutech" style="height: 44px; background: #fff; border-radius: 8px; padding: 6px 12px; margin-bottom: 8px;">
         <div class="footer-slogan">Số hóa giáo dục, đồng hành cùng giáo viên & trung tâm phát triển bền vững.<br />Thuộc Tập đoàn Lam Sơn.</div>
         <div class="footer-socials">
           <a href="https://facebook.com" target="_blank" class="social-btn" title="Facebook">📘</a>
@@ -2218,7 +2067,7 @@
   // ─── CONFETTI ───
   function launchConfetti() {
     const wrap = document.getElementById('confetti-wrap');
-    const colors = ['#F4A300','#FFB92E','#1B2F5E','#ffffff','#22c55e','#3b82f6'];
+    const colors = ['#D4940C','#E8A817','#1B2F5E','#ffffff','#2A4A8C','#FFF8EB'];
     for (let i = 0; i < 120; i++) {
       const el = document.createElement('div');
       const size = Math.random() * 9 + 5;
