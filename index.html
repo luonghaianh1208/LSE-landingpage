@@ -2027,7 +2027,10 @@
           },
           body: JSON.stringify(payload)
         });
-        if (!res.ok) throw new Error('Supabase error');
+        if (!res.ok) {
+          const errData = await res.json();
+          throw new Error(errData.message || 'Supabase error');
+        }
       } else {
         // Demo mode: simulate delay
         await new Promise(r => setTimeout(r, 1200));
@@ -2037,7 +2040,8 @@
       document.getElementById('form-success').classList.add('show');
       launchConfetti();
     } catch (err) {
-      alert('Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp 0936.171.111');
+      console.error(err);
+      alert('Có lỗi từ Database: ' + err.message + '. Vui lòng kiểm tra lại cấu hình Supabase hoặc tạo bảng leads.');
       btn.disabled = false; txt.textContent = 'Gửi đăng ký tư vấn →'; spin.style.display = 'none';
     }
   });
